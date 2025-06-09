@@ -14,55 +14,34 @@ public class Screen {
 
     private Theatre theatre;
 
-    public Screen(int screenId, String name, int capacity, int theatreId, List<String> rows) {
-        this.screenId = screenId;
+    static private int id=0;
+
+    public Screen(String name, int capacity, int theatreId, List<String> rows) {
+        this.screenId = ++id;
         this.name = name;
         this.capacity = capacity;
         this.theatreId = theatreId;
     }
 
-    public Screen(int screenId, String name, int capacity, Theatre theatre, List<String> rows) {
-        this.screenId = screenId;
+    public Screen(String name, int capacity, Theatre theatre, List<String> rows) {
+        this.screenId = ++id;
         this.name = name;
         this.capacity = capacity;
         this.theatre = theatre;
         this.theatreId = (theatre != null) ? theatre.getTheatreId() : 0; // Set theatreId from object
     }
 
-    public int getScreenId() {
-        return screenId;
-    }
+    //GETETRS
+    public int getScreenId() {return screenId;}
+    public Theatre getTheatre() {return theatre;}
+    public String getName() {return name;}
+    public int getCapacity() {return capacity;}
+    public int getTheatreId() {return theatreId;}
 
-    public void setScreenId(int screenId) {
-        this.screenId = screenId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
-    }
-
-    public int getTheatreId() {
-        return theatreId;
-    }
-
-    public void setTheatreId(int theatreId) {
-        this.theatreId = theatreId;
-    }
-
-    public Theatre getTheatre() {
-        return theatre;
-    }
+    //SETTERS
+    public void setScreenId(int screenId) {this.screenId = screenId;}
+    public void setName(String name) {this.name = name;}
+    public void setCapacity(int capacity) {this.capacity = capacity;}
+    public void setTheatreId(int theatreId) {this.theatreId = theatreId;}
 
 }
