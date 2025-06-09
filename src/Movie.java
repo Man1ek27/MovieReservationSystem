@@ -39,6 +39,11 @@ public class Movie {
         this.managers = new ArrayList<>();
     }
 
+    //ADD Manager
+    public void addManager(Admin admin){
+        managers.add(admin);
+    }
+
     //GETTERS
     public int getMovieId() {return movieId;}
     public List<Admin> getManagers() {return managers;}

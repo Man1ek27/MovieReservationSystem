@@ -10,7 +10,6 @@ public class Theatre {
     private String city;
 
     private Admin manager;
-    //TO DO: Dodać setter dla screen
     private List<Screen> screens;
 
 
@@ -22,6 +21,11 @@ public class Theatre {
         this.address = address;
         this.city = city;
         this.screens = new ArrayList<>();
+    }
+
+    //ADD screen
+    public void addScreen(Screen screen){
+        screens.add(screen);
     }
 
     //GETTERS

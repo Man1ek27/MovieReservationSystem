@@ -2,7 +2,7 @@ package src;
 
 import com.sun.prism.Texture;
 
-class Seat  {
+public class Seat  {
 
     private int seatId;
     private int seatNumber;
