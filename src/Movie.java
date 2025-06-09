@@ -30,7 +30,7 @@ public class Movie {
         this.managers = managers;
     }
 
-    public Movie(int movieId, String title, String description, String language, String genre,
+    public Movie(String title, String description, String language, String genre,
                  int durationMinutes, Date releaseDate, String posterUrl, AudioType audioType) {
         this.movieId = ++id;
         this.title = title;
