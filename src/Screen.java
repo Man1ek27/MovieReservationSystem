@@ -52,7 +52,7 @@ public class Screen {
         }
         this.shows.add(show);
     }
-    // usuwamy po id
+    // Usuwamy show po Id
     public void removeShow(int showId) {
         if (this.shows != null) {
             this.shows.removeIf(s -> s.getShowId() == showId);
