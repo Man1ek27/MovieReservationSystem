@@ -8,12 +8,13 @@ public class Admin {
     private String email;
     private String password;
 
-    //TO DO: Dodać settery dla managedTheatres i managedMovies
     private List<Theatre> managedTheatres;
     private List<Movie> managedMovies;
 
-    public Admin(int adminId, String name, String email, String password) {
-        this.adminId = adminId;
+
+    static private int id =0;
+    public Admin(String name, String email, String password) {
+        this.adminId = ++id;
         this.name = name;
         this.email = email;
         this.password = password;
@@ -21,43 +22,30 @@ public class Admin {
         this.managedMovies = new ArrayList<>();
     }
 
-    public int getAdminId() {
-        return adminId;
+    //ADD Theatre
+    public void addTheatre(Theatre theatre){
+        managedTheatres.add(theatre);
     }
 
-    public void setAdminId(int adminId) {
-        this.adminId = adminId;
+    //ADD Movie
+    public void addMovie(Movie movie){
+        managedMovies.add(movie);
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public String getEmail() {
-        return email;
-    }
+    //GETTERS
+    public List<Movie> getManagedMovies() {return managedMovies;}
+    public int getAdminId() {return adminId;}
+    public String getName() {return name;}
+    public String getEmail() {return email;}
+    public String getPassword() {return password;}
+    public List<Theatre> getManagedTheatres() {return managedTheatres;}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    //SETTERS
+    public void setAdminId(int adminId) {this.adminId = adminId;}
+    public void setPassword(String password) {this.password = password;}
+    public void setName(String name) {this.name = name;}
+    public void setEmail(String email) {this.email = email;}
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public List<Theatre> getManagedTheatres() {
-        return managedTheatres;
-    }
-
-    public List<Movie> getManagedMovies() {
-        return managedMovies;
-    }
 }

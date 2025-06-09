@@ -11,6 +11,7 @@ public class Movie {
         DUBBING,
         SUBTITLE
     }
+    static private int id =0;
 
     private int movieId;
     private String title;
@@ -31,7 +32,7 @@ public class Movie {
 
     public Movie(int movieId, String title, String description, String language, String genre,
                  int durationMinutes, Date releaseDate, String posterUrl, AudioType audioType) {
-        this.movieId = movieId;
+        this.movieId = ++id;
         this.title = title;
         this.description = description;
         this.language = language;
@@ -43,79 +44,32 @@ public class Movie {
         this.managers = new ArrayList<>();
     }
 
-    public int getMovieId() {
-        return movieId;
+    //ADD Manager
+    public void addManager(Admin admin){
+        managers.add(admin);
     }
 
-    public void setMovieId(int movieId) {
-        this.movieId = movieId;
-    }
+    //GETTERS
+    public int getMovieId() {return movieId;}
+    public List<Admin> getManagers() {return managers;}
+    public String getTitle() {return title;}
+    public String getDescription() {return description;}
+    public String getLanguage() {return language;}
+    public String getGenre() {return genre;}
+    public int getDurationMinutes() {return durationMinutes;}
+    public Date getReleaseDate() {return releaseDate;}
+    public String getPosterUrl() {return posterUrl;}
+    public AudioType getAudioType() {return audioType;}
 
-    public String getTitle() {
-        return title;
-    }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public int getDurationMinutes() {
-        return durationMinutes;
-    }
-
-    public void setDurationMinutes(int durationMinutes) {
-        this.durationMinutes = durationMinutes;
-    }
-
-    public Date getReleaseDate() {
-        return releaseDate;
-    }
-
-    public void setReleaseDate(Date releaseDate) {
-        this.releaseDate = releaseDate;
-    }
-
-    public String getPosterUrl() {
-        return posterUrl;
-    }
-
-    public void setPosterUrl(String posterUrl) {
-        this.posterUrl = posterUrl;
-    }
-
-    public AudioType getAudioType() {
-        return audioType;
-    }
-
-    public void setAudioType(AudioType audioType) {
-        this.audioType = audioType;
-    }
-
-    public List<Admin> getManagers() {
-        return managers;
-    }
+    //SETTERS
+    public void setMovieId(int movieId) {this.movieId = movieId;}
+    public void setTitle(String title) {this.title = title;}
+    public void setDescription(String description) {this.description = description;}
+    public void setLanguage(String language) {this.language = language;}
+    public void setGenre(String genre) {this.genre = genre;}
+    public void setDurationMinutes(int durationMinutes) {this.durationMinutes = durationMinutes;}
+    public void setReleaseDate(Date releaseDate) {this.releaseDate = releaseDate;}
+    public void setPosterUrl(String posterUrl) {this.posterUrl = posterUrl;}
+    public void setAudioType(AudioType audioType) {this.audioType = audioType;}
 }
