@@ -6,10 +6,37 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.sql.*;
+
 
 public class Main extends Application {
     public static void main(String[] args) throws Exception {
         launch(args);
+
+        String url = "jdbc:postgresql://localhost:5432/moviereservation";
+        String user = "postgres";
+        String password = "123qwe";
+
+        try{
+            Connection conn = DriverManager.getConnection(url, user, password);
+            if(conn != null){
+                System.out.println("Połączono!");
+            }
+
+            Statement stmt= conn.createStatement();
+            String sql = "SELECT * FROM \"Scanes\".\"Scanes\"";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next()){
+                int id = rs.getInt("ID");
+                String name = rs.getString("name");
+                int capacity = rs.getInt("capacity");
+                System.out.println("ID: " + id + ", name: " + name + ", capacity: " + capacity);
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
 
     }
 
