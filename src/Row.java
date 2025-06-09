@@ -17,6 +17,10 @@ public class Row {
         this.rowId = ++ id;
     }
 
+    //ADD seat
+    public void addSeat(Seat seat){
+        seats.add(seat);
+    }
 
     //GETTERY
     public ArrayList<Seat> getSeats() {return seats;}

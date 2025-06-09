@@ -8,7 +8,6 @@ public class Admin {
     private String email;
     private String password;
 
-    //TO DO: Dodać settery dla managedTheatres i managedMovies
     private List<Theatre> managedTheatres;
     private List<Movie> managedMovies;
 
@@ -21,6 +20,16 @@ public class Admin {
         this.password = password;
         this.managedTheatres = new ArrayList<>();
         this.managedMovies = new ArrayList<>();
+    }
+
+    //ADD Theatre
+    public void addTheatre(Theatre theatre){
+        managedTheatres.add(theatre);
+    }
+
+    //ADD Movie
+    public void addMovie(Movie movie){
+        managedMovies.add(movie);
     }
 
 
