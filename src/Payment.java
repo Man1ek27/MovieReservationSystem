@@ -15,7 +15,7 @@ public class Payment {
     }
 
     public void setPaymentId(int paymentId) {
-        this.paymentId = paymentId;
+        this.paymentId =  paymentId;
     }
 
     public double getAmount() {
