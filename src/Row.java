@@ -6,8 +6,4 @@ public class Row {
     private ArrayList<Seat> Seats = new ArrayList<>();
     private int rowId;
 
-
-
-
-
 }
