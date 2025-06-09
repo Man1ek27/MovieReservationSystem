@@ -16,7 +16,7 @@ public class Screen {
 
     static private int id=0;
 
-    public Screen(String name, int capacity, int theatreId, List<String> rows) {
+    public Screen(String name, int capacity, int theatreId) {
         this.screenId = ++id;
         this.name = name;
         this.capacity = capacity;
