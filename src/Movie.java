@@ -3,6 +3,7 @@ package src;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
+import java.time.LocalDate;
 
 public class Movie {
     public enum AudioType {
@@ -23,6 +24,10 @@ public class Movie {
 
     // TO DO: setter dla managers
     private List<Admin> managers;
+
+    public void setManagers(List<Admin> managers) {
+        this.managers = managers;
+    }
 
     public Movie(int movieId, String title, String description, String language, String genre,
                  int durationMinutes, Date releaseDate, String posterUrl, AudioType audioType) {
