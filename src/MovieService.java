@@ -6,12 +6,15 @@ import java.util.stream.Collectors;
 
 public class MovieService {
     private List<Movie> movies = new ArrayList<>();
-    private int nextId = 1;
 
     public void addMovie(String title, String description, String language, String genre,
                          int duration, java.util.Date releaseDate, String posterUrl, Movie.AudioType audioType) {
-        Movie movie = new Movie(nextId++, title, description, language, genre,
+        Movie movie = new Movie(title, description, language, genre,
                 duration, releaseDate, posterUrl, audioType);
+        movies.add(movie);
+    }
+
+    public void addMovie(Movie movie) {
         movies.add(movie);
     }
 
