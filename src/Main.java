@@ -3,6 +3,7 @@ package src;
 import javafx.fxml.FXMLLoader;
 import javafx.application.Application;
 // import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -13,39 +14,45 @@ public class Main extends Application {
     public static void main(String[] args) throws Exception {
         launch(args);
 
-        String url = "jdbc:postgresql://localhost:5432/moviereservation";
-        String user = "postgres";
-        String password = "123qwe";
-
-        try{
-            Connection conn = DriverManager.getConnection(url, user, password);
-            if(conn != null){
-                System.out.println("Połączono!");
-            }
-
-            Statement stmt= conn.createStatement();
-            String sql = "SELECT * FROM \"Scanes\".\"Scanes\"";
-            ResultSet rs = stmt.executeQuery(sql);
-
-            while (rs.next()){
-                int id = rs.getInt("ID");
-                String name = rs.getString("name");
-                int capacity = rs.getInt("capacity");
-                System.out.println("ID: " + id + ", name: " + name + ", capacity: " + capacity);
-            }
-        }
-        catch (SQLException e){
-            e.printStackTrace();
-        }
+//        String url = "jdbc:postgresql://localhost:5432/moviereservation";
+//        String user = "postgres";
+//        String password = "123qwe";
+//
+//        try{
+//            Connection conn = DriverManager.getConnection(url, user, password);
+//            if(conn != null){
+//                System.out.println("Połączono!");
+//            }
+//
+//            Statement stmt= conn.createStatement();
+//            String sql = "SELECT * FROM \"Scanes\".\"Scanes\"";
+//            ResultSet rs = stmt.executeQuery(sql);
+//
+//            while (rs.next()){
+//                int id = rs.getInt("ID");
+//                String name = rs.getString("name");
+//                int capacity = rs.getInt("capacity");
+//                System.out.println("ID: " + id + ", name: " + name + ", capacity: " + capacity);
+//            }
+//        }
+//        catch (SQLException e){
+//            e.printStackTrace();
+//        }
 
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Recources/MovieView.fxml"));
-        Scene scene = new Scene(loader.load());
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Dodawanie filmu");
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Recources/MovieView.fxml"));
+//        Scene scene = new Scene(loader.load());
+//        primaryStage.setTitle("Dodawanie filmu");
+//        primaryStage.setScene(scene);
+//        primaryStage.show();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Recources/login.fxml"));
+        Parent root = loader.load();
+        primaryStage.setTitle("Logowanie");
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 //    @Override

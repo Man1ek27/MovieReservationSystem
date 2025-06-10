@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Row {
     private ArrayList<Seat> seats = new ArrayList<>();
     private int rowId;
+    private String rowType = "Classic";
 
     static private int id = 0;
 

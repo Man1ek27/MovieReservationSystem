@@ -8,6 +8,7 @@ public class Booking {
     private double totalAmount;
     private int userId;
     private int showId;
+    private String status;
 
     static private int id =0;
 
@@ -21,7 +22,6 @@ public class Booking {
 
 
     // Możliwe wartości: PENDING, CONFIRMED, CANCELLED
-    private String status;
 
     //GETTERS
     public int getBookingId() {return bookingId;}
