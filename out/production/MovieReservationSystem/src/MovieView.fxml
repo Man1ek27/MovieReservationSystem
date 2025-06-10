@@ -7,6 +7,8 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
 <VBox alignment="CENTER" prefHeight="394.0" prefWidth="400" spacing="10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.MovieController">
 
@@ -50,6 +52,6 @@
    </HBox>
    <ComboBox fx:id="audioTypeComboBox" prefWidth="150.0" />
 
-    <Button fx:id="saveButton" text="Zapisz" onAction="#onSaveButtonClick"/>
+    <Button fx:id="saveButton" text="Zapisz" />
 
 </VBox>
