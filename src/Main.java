@@ -1,19 +1,10 @@
 package src;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.image.Image;
-import com.sun.prism.Texture;
 import javafx.application.Application;
 // import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import javafx.scene.paint.Color;
 
 
 public class Main extends Application {
@@ -24,7 +15,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("MovieView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Recources/MovieView.fxml"));
         Scene scene = new Scene(loader.load());
         primaryStage.setScene(scene);
         primaryStage.setTitle("Dodawanie filmu");
