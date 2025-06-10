@@ -46,7 +46,7 @@ public class MovieController {
             System.out.println("Dodano film: " + movie.getTitle());
 
             // Załaduj nowy widok z listą filmów
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("MovieListView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Recources/MovieListView.fxml"));
             Parent root = loader.load();
 
             // Przekaż MovieService do nowego kontrolera, jeśli trzeba
