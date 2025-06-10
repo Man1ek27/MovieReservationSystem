@@ -14,6 +14,10 @@ public class MovieService {
         movies.add(movie);
     }
 
+    public void addMovie(Movie movie) {
+        movies.add(movie);
+    }
+
     public void deleteMovie(int movieId) {
         movies.removeIf(m -> m.getMovieId() == movieId);
     }
