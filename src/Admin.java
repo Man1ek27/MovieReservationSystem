@@ -11,7 +11,6 @@ public class Admin {
     private List<Theatre> managedTheatres;
     private List<Movie> managedMovies;
 
-
     static private int id =0;
     public Admin(String name, String email, String password) {
         this.adminId = ++id;
