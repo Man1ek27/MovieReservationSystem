@@ -1,14 +1,19 @@
 package src;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 
+import javafx.stage.Stage;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.concurrent.CountDownLatch; // Do synchronizacji w testach/przykładach
@@ -96,6 +101,25 @@ public class LoginController {
         } else {
             messageLabel.setText("Nie połączono z serwerem WebSocket.");
         }
+    }
+
+    @FXML
+    void handleRegister(ActionEvent event)throws IOException {
+        FXMLLoader registerLoader = new FXMLLoader(getClass().getResource("../Recources/register.fxml"));
+        Parent root = registerLoader.load();
+
+        // Przekaż MovieService do nowego kontrolera, jeśli trzeba
+        RegisterController controller= registerLoader.getController();
+        controller.setClient(wsClient); // musisz dodać tę metodę w MovieListController
+
+        Stage stage = new Stage();
+        stage.setTitle("Register");
+        stage.setScene(new Scene(root));
+        stage.show();
+
+        ((Stage) loginField.getScene().getWindow()).close();
+
+
     }
 
     // Metoda do zamknięcia klienta WebSocket, gdy kontroler nie jest już używany
