@@ -21,6 +21,14 @@ public class MovieController {
     @FXML private TextField posterUrlField;
     @FXML private ComboBox<Movie.AudioType> audioTypeComboBox;
 
+    private MovieListController movieListController;
+
+    public void setMovieListController(MovieListController controller) {
+        this.movieListController = controller;
+    }
+
+
+
     private final MovieService movieService = new MovieService();
 
     @FXML
@@ -45,42 +53,41 @@ public class MovieController {
             movieService.addMovie(movie);
             System.out.println("Dodano film: " + movie.getTitle());
 
-            // Załaduj nowy widok z listą filmów
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Recources/MovieListView.fxml"));
-            Parent root = loader.load();
+            // Zamknij aktualne okno formularza dodawania filmu
+            Stage currentStage = (Stage) titleField.getScene().getWindow();
+            currentStage.close();
 
-            // Przekaż MovieService do nowego kontrolera, jeśli trzeba
-            MovieListController controller = loader.getController();
-            controller.setMovieService(movieService);  // musisz dodać tę metodę w MovieListController
-
-            Stage stage = new Stage();
-            stage.setTitle("Lista filmów");
-            stage.setScene(new Scene(root));
-            stage.show();
-
-            // Zamknij bieżące okno
-            ((Stage) titleField.getScene().getWindow()).close();
-
-//            // Wyczyść pola
-//            titleField.clear();
-//            descriptionField.clear();
-//            languageField.clear();
-//            genreField.clear();
-//            durationField.clear();
-//            posterUrlField.clear();
-//            releaseDatePicker.setValue(null);
-//            audioTypeComboBox.getSelectionModel().clearSelection();
+//            // Otwórz nowe okno panelu admina (listy filmów)
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Recources/AdminDashboard.fxml"));
+//            Parent root = loader.load();
+//
+//            MovieListController controller = loader.getController();
+//            controller.setMovieService(movieService);  // przekaż MovieService
+//
+//            Stage stage = new Stage();
+//            stage.setTitle("Panel Admina - Lista filmów");
+//            stage.setScene(new Scene(root));
+//            stage.show();
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("DEBUG: title = " + titleField.getText());
-            System.out.println("DEBUG: duration = " + durationField.getText());
-            System.out.println("DEBUG: date = " + releaseDatePicker.getValue());
-            System.out.println("DEBUG: audio = " + audioTypeComboBox.getValue());
             Alert alert = new Alert(Alert.AlertType.ERROR, "Nieprawidłowe dane!");
             alert.showAndWait();
         }
     }
+
+
+    private void clearForm() {
+        titleField.clear();
+        descriptionField.clear();
+        languageField.clear();
+        genreField.clear();
+        durationField.clear();
+        posterUrlField.clear();
+        releaseDatePicker.setValue(null);
+        audioTypeComboBox.getSelectionModel().clearSelection();
+    }
+
 
 }
 

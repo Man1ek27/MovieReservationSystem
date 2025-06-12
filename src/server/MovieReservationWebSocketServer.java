@@ -18,6 +18,38 @@ public class MovieReservationWebSocketServer extends WebSocketServer {
     private final String DB_USER = "postgres";
     private final String DB_PASSWORD = "123qwe"; // Pamiętaj o zabezpieczeniu hasła w produkcji!
 
+    private String authenticateAndGetRole(String username, String password) throws SQLException, ClassNotFoundException {
+        Class.forName("org.postgresql.Driver");
+
+        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
+            // Sprawdź admina
+            String sqlAdmin = "SELECT * FROM admin WHERE name = ? AND password = ?";
+            try (PreparedStatement stmtAdmin = conn.prepareStatement(sqlAdmin)) {
+                stmtAdmin.setString(1, username);
+                stmtAdmin.setString(2, password);
+                ResultSet rsAdmin = stmtAdmin.executeQuery();
+                if (rsAdmin.next()) {
+                    return "admin";  // jest adminem
+                }
+            }
+
+            // Sprawdź usera
+            String sqlUser = "SELECT * FROM \"user\" WHERE name = ? AND password = ?";
+            try (PreparedStatement stmtUser = conn.prepareStatement(sqlUser)) {
+                stmtUser.setString(1, username);
+                stmtUser.setString(2, password);
+                ResultSet rsUser = stmtUser.executeQuery();
+                if (rsUser.next()) {
+                    return "user";   // jest userem
+                }
+            }
+
+            // Nie znaleziono w admin ani user
+            return null;
+        }
+    }
+
+
     public MovieReservationWebSocketServer(int port) {
         super(new InetSocketAddress(port));
         System.out.println("WebSocket Server started on port: " + port);
@@ -38,25 +70,26 @@ public class MovieReservationWebSocketServer extends WebSocketServer {
     public void onMessage(WebSocket conn, String message) {
         System.out.println("Received message from " + conn.getRemoteSocketAddress().getAddress().getHostAddress() + ": " + message);
 
-        // PRZYKŁAD: Obsługa wiadomości z logowaniem
         if (message.startsWith("LOGIN:")) {
-            String[] parts = message.substring(6).split(":"); // LOGIN:username:password
+            String[] parts = message.substring(6).split(":");
             if (parts.length == 2) {
                 String username = parts[0];
                 String password = parts[1];
                 try {
-                    if (authenticateUser(username, password)) {
-                        conn.send("LOGIN_SUCCESS: Welcome, " + username + "!");
+                    String role = authenticateAndGetRole(username, password);
+                    if (role != null) {
+                        conn.send("LOGIN_SUCCESS:" + role + ":" + username);
                     } else {
                         conn.send("LOGIN_FAILED: Invalid username or password.");
                     }
-                } catch (SQLException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                     conn.send("SERVER_ERROR: Database error during login.");
                 }
             } else {
                 conn.send("LOGIN_FAILED: Invalid login format.");
             }
+
         } else if (message.startsWith("ADD_MOVIE:")) {
             // TODO: Tutaj obsługa dodawania filmu do bazy danych
             // Przykład: ADD_MOVIE:Title:Description:Language:Genre:Duration:ReleaseDate(YYYY-MM-DD):PosterURL:AudioType

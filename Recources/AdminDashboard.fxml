@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="src.AdminDashboardController">
+
+    <top>
+        <Label text="Panel Administratora"
+               style="-fx-font-size: 20px; -fx-font-weight: bold;"
+               BorderPane.alignment="CENTER" />
+    </top>
+
+    <center>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Button text="Dodaj film" onAction="#onAddMovieButtonClick" />
+            <Label text="Lista filmów:" />
+            <ListView fx:id="moviesListView" prefHeight="300.0" />
+        </VBox>
+    </center>
+
+    <bottom>
+        <Button text="Wyloguj się"
+                onAction="#handleLogout"
+                prefWidth="120"
+                BorderPane.alignment="CENTER"
+                style="-fx-font-size: 14px; -fx-background-color: #DD4444; -fx-text-fill: white; -fx-padding: 8px;" />
+    </bottom>
+</BorderPane>

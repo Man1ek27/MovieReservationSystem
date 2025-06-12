@@ -1,11 +1,15 @@
 package src;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 
+import javafx.stage.Stage;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 
@@ -33,23 +37,40 @@ public class LoginController {
 
                 @Override
                 public void onMessage(String message) {
+
                     // Obsługa wiadomości od serwera
                     System.out.println("Received from server: " + message);
                     javafx.application.Platform.runLater(() -> {
                         if (message.startsWith("LOGIN_SUCCESS:")) {
-                            messageLabel.setText(message.substring(14)); // Wyświetl wiadomość sukcesu
-                            // TODO: Przejdź do głównego widoku aplikacji po zalogowaniu
-                            // Na przykład:
-                            // try {
-                            //     FXMLLoader loader = new FXMLLoader(getClass().getResource("../Recources/MovieListView.fxml"));
-                            //     Parent root = loader.load();
-                            //     Stage stage = (Stage) loginField.getScene().getWindow();
-                            //     stage.setScene(new Scene(root));
-                            //     stage.setTitle("Movie List");
-                            //     stage.show();
-                            // } catch (Exception e) {
-                            //     e.printStackTrace();
-                            // }
+                            String[] parts = message.substring(14).split(":");
+                            if (parts.length >= 2) {
+                                String role = parts[0];
+                                String username = parts[1];
+                                messageLabel.setText("Zalogowano jako: " + username + " (" + role + ")");
+
+                                if ("admin".equalsIgnoreCase(role)) {
+                                    try {
+                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Recources/AdminDashboard.fxml"));
+                                        Parent root = loader.load();
+
+                                        // Pobierz kontroler i przekaż mu MovieService (jeśli potrzebujesz)
+                                        AdminDashboardController controller = loader.getController();
+                                        controller.setMovieService(new MovieService()); // lub jakikolwiek sposób masz na dostęp do MovieService
+
+                                        Stage stage = (Stage) loginField.getScene().getWindow();
+                                        stage.setScene(new Scene(root));
+                                        stage.setTitle("Panel administratora");
+                                        stage.show();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                        messageLabel.setText("Błąd podczas ładowania panelu admina.");
+                                    }
+                                } else if ("user".equalsIgnoreCase(role)) {
+                                    // Ładujesz ekran usera — jeśli masz inny ekran, możesz tutaj go załadować
+                                    messageLabel.setText("Zalogowano jako zwykły użytkownik — ekran do zaimplementowania.");
+                                }
+                            }
+
                         } else if (message.startsWith("LOGIN_FAILED:")) {
                             messageLabel.setText(message.substring(13)); // Wyświetl wiadomość błędu
                         } else if (message.startsWith("SERVER_ERROR:")) {
