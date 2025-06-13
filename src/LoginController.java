@@ -50,7 +50,7 @@ public class LoginController {
 
                                 if ("admin".equalsIgnoreCase(role)) {
                                     try {
-                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Recources/AdminDashboard.fxml"));
+                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/AdminDashboard.fxml"));
                                         Parent root = loader.load();
 
                                         // Pobierz kontroler i przekaż mu MovieService (jeśli potrzebujesz)

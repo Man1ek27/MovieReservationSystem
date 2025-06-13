@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 
 import src.server.MovieReservationWebSocketServer; // Import nowej klasy serwera
 
-import java.sql.*; // Te importy będą mniej potrzebne w Main, ale zostawmy na razie
 
 public class Main extends Application {
 
@@ -26,7 +25,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         // ... reszta kodu JavaFX, która ładuje login.fxml
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Recources/login.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/login.fxml"));
         Parent root = loader.load();
         primaryStage.setTitle("Logowanie");
         primaryStage.setScene(new Scene(root));
