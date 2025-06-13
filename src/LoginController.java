@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.concurrent.CountDownLatch; // Do synchronizacji w testach/przykładach
@@ -66,8 +67,28 @@ public class LoginController {
                                         messageLabel.setText("Błąd podczas ładowania panelu admina.");
                                     }
                                 } else if ("user".equalsIgnoreCase(role)) {
-                                    // Ładujesz ekran usera — jeśli masz inny ekran, możesz tutaj go załadować
-                                    messageLabel.setText("Zalogowano jako zwykły użytkownik — ekran do zaimplementowania.");
+                                    messageLabel.setText("Zalogowano jako zwykły użytkownik.");
+                                    // Po poprawnym zalogowaniu jako user
+                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/ChooseTheatreView.fxml"));
+                                    Parent root = null;
+                                    try {
+                                        root = loader.load();
+                                    } catch (IOException e) {
+                                        throw new RuntimeException(e);
+                                    }
+
+                                    // Przekazanie połączenia do serwisu
+                                    ChooseTheatreController controller = loader.getController();
+                                    controller.setTheatreService(new TheatreService()); // lub jak masz połączenie
+
+                                    Stage stage = new Stage();
+                                    stage.setTitle("Wybierz teatr");
+                                    stage.setScene(new Scene(root));
+                                    stage.show();
+
+                                    // Zamknięcie okna logowania
+                                    ((Stage) loginField.getScene().getWindow()).close();
+
                                 }
                             }
 

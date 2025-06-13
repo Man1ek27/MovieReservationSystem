@@ -42,4 +42,9 @@ public class Theatre {
     public void setAddress(String address) {this.address = address;}
     public void setCity(String city) {this.city = city;}
     public void setManager(Admin manager) {this.manager = manager;}
+
+    @Override
+    public String toString() {
+        return city + " – " + address;
+    }
 }
