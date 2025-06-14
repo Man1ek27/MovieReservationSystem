@@ -113,7 +113,7 @@ public class LoginController {
                                 try {
                                     if (registerStage != null) registerStage.close();
 
-                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../Recources/login.fxml"));
+                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/login.fxml"));
                                     Parent root = loader.load();
 
                                     Stage stage = (Stage) loginField.getScene().getWindow();
