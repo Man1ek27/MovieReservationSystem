@@ -45,7 +45,7 @@
                   <Font size="30.0" />
                </font>
             </Label>
-          <Label fx:id="massageLabel" layoutX="209.0" layoutY="292.0" prefHeight="26.0" prefWidth="215.0" text="" textOverrun="CLIP">
+          <Label fx:id="messageLabel" layoutX="170.0" layoutY="294.0" prefHeight="26.0" prefWidth="294.0" text="" textOverrun="CLIP">
               <font>
                   <Font size="17.0" />
               </font>

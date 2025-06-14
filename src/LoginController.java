@@ -1,5 +1,6 @@
 package src;
 
+import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,7 +10,9 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 
@@ -23,8 +26,11 @@ public class LoginController {
     @FXML private PasswordField passwordField;
     @FXML private Label messageLabel;
 
+
     private WebSocketClient wsClient;
     private final CountDownLatch latch = new CountDownLatch(1); // Do synchronizacji odpowiedzi serwera
+    private Stage registerStage;
+    private  RegisterController reg;
 
     public void initialize() {
         try {
@@ -57,7 +63,36 @@ public class LoginController {
                             // }
                         } else if (message.startsWith("LOGIN_FAILED:")) {
                             messageLabel.setText(message.substring(13)); // Wyświetl wiadomość błędu
-                        } else if (message.startsWith("SERVER_ERROR:")) {
+                        }
+                        else if (message.startsWith("REGISTER_SUCCESS:")) {
+
+
+
+                            //odczekaj 2 sekundy, a potem zamnij okno rejestracji
+                            PauseTransition delay = new PauseTransition(Duration.seconds(2));
+                            reg.setMessageLabel("Registered successfuly!!!!");//przekazanie wiadomości do RegisterControll.messageLabel
+
+                            delay.setOnFinished(event -> {//to się dzieje po skończeniu opóźnienia
+                                try {
+                                    if (registerStage != null) registerStage.close();
+
+                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../Recources/login.fxml"));
+                                    Parent root = loader.load();
+
+                                    Stage stage = (Stage) loginField.getScene().getWindow();
+                                    stage.setScene(new Scene(root));
+                                    stage.setTitle("Login");
+                                    stage.show();
+
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+                            });
+
+                            delay.play();//włączenie opóźnienia
+                        }
+                        else if (message.startsWith("SERVER_ERROR:")) {
                             messageLabel.setText(message.substring(13));
                         }
                     });
@@ -110,9 +145,11 @@ public class LoginController {
 
         // Przekaż MovieService do nowego kontrolera, jeśli trzeba
         RegisterController controller= registerLoader.getController();
-        controller.setClient(wsClient); // musisz dodać tę metodę w MovieListController
+        controller.setClient(wsClient);
+        reg = controller;
 
         Stage stage = new Stage();
+        this.registerStage = stage;
         stage.setTitle("Register");
         stage.setScene(new Scene(root));
         stage.show();
