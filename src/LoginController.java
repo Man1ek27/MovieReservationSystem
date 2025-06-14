@@ -44,23 +44,60 @@ public class LoginController {
 
                 @Override
                 public void onMessage(String message) {
+
                     // Obsługa wiadomości od serwera
                     System.out.println("Received from server: " + message);
                     javafx.application.Platform.runLater(() -> {
                         if (message.startsWith("LOGIN_SUCCESS:")) {
-                            messageLabel.setText(message.substring(14)); // Wyświetl wiadomość sukcesu
-                            // TODO: Przejdź do głównego widoku aplikacji po zalogowaniu
-                            // Na przykład:
-                            // try {
-                            //     FXMLLoader loader = new FXMLLoader(getClass().getResource("../Recources/MovieListView.fxml"));
-                            //     Parent root = loader.load();
-                            //     Stage stage = (Stage) loginField.getScene().getWindow();
-                            //     stage.setScene(new Scene(root));
-                            //     stage.setTitle("Movie List");
-                            //     stage.show();
-                            // } catch (Exception e) {
-                            //     e.printStackTrace();
-                            // }
+                            String[] parts = message.substring(14).split(":");
+                            if (parts.length >= 2) {
+                                String role = parts[0];
+                                String username = parts[1];
+                                messageLabel.setText("Zalogowano jako: " + username + " (" + role + ")");
+
+                                if ("admin".equalsIgnoreCase(role)) {
+                                    try {
+                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/AdminDashboard.fxml"));
+                                        Parent root = loader.load();
+
+                                        // Pobierz kontroler i przekaż mu MovieService (jeśli potrzebujesz)
+                                        AdminDashboardController controller = loader.getController();
+                                        controller.setMovieService(new MovieService()); // lub jakikolwiek sposób masz na dostęp do MovieService
+
+                                        Stage stage = (Stage) loginField.getScene().getWindow();
+                                        stage.setScene(new Scene(root));
+                                        stage.setTitle("Panel administratora");
+                                        stage.show();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                        messageLabel.setText("Błąd podczas ładowania panelu admina.");
+                                    }
+                                } else if ("user".equalsIgnoreCase(role)) {
+                                    messageLabel.setText("Zalogowano jako zwykły użytkownik.");
+                                    // Po poprawnym zalogowaniu jako user
+                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/ChooseTheatreView.fxml"));
+                                    Parent root = null;
+                                    try {
+                                        root = loader.load();
+                                    } catch (IOException e) {
+                                        throw new RuntimeException(e);
+                                    }
+
+                                    // Przekazanie połączenia do serwisu
+                                    ChooseTheatreController controller = loader.getController();
+                                    controller.setTheatreService(new TheatreService()); // lub jak masz połączenie
+
+                                    Stage stage = new Stage();
+                                    stage.setTitle("Wybierz teatr");
+                                    stage.setScene(new Scene(root));
+                                    stage.show();
+
+                                    // Zamknięcie okna logowania
+                                    ((Stage) loginField.getScene().getWindow()).close();
+
+                                }
+                            }
+
                         } else if (message.startsWith("LOGIN_FAILED:")) {
                             messageLabel.setText(message.substring(13)); // Wyświetl wiadomość błędu
                         }

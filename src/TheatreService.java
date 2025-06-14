@@ -1,0 +1,32 @@
+// TheatreService.java
+package src;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class TheatreService {
+    private static final String DB_URL = "jdbc:postgresql://localhost:5432/moviereservation";
+    private static final String DB_USER = "postgres";
+    private static final String DB_PASSWORD = "123qwe";
+
+    public List<Theatre> getAllTheatres() {
+        List<Theatre> theatres = new ArrayList<>();
+        String query = "SELECT * FROM theatre";
+        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+            while (rs.next()) {
+                Theatre theatre = new Theatre(
+                        rs.getString("name"),
+                        rs.getString("address"),
+                        rs.getString("city")
+                );
+                theatres.add(theatre);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return theatres;
+    }
+}

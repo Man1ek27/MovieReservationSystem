@@ -11,7 +11,6 @@ public class Movie {
         DUBBING,
         SUBTITLE
     }
-    static private int id =0;
 
     private int movieId;
     private String title;
@@ -30,9 +29,9 @@ public class Movie {
         this.managers = managers;
     }
 
-    public Movie(String title, String description, String language, String genre,
+    public Movie(int movieId, String title, String description, String language, String genre,
                  int durationMinutes, Date releaseDate, String posterUrl, AudioType audioType) {
-        this.movieId = ++id;
+        this.movieId = movieId;
         this.title = title;
         this.description = description;
         this.language = language;
@@ -43,6 +42,21 @@ public class Movie {
         this.audioType = audioType;
         this.managers = new ArrayList<>();
     }
+
+    public Movie(String title, String description, String language, String genre,
+                 int durationMinutes, Date releaseDate, String posterUrl, AudioType audioType) {
+        this.title = title;
+        this.description = description;
+        this.language = language;
+        this.genre = genre;
+        this.durationMinutes = durationMinutes;
+        this.releaseDate = releaseDate;
+        this.posterUrl = posterUrl;
+        this.audioType = audioType;
+        this.managers = new ArrayList<>();
+    }
+
+
 
     //ADD Manager
     public void addManager(Admin admin){
