@@ -94,10 +94,30 @@ public class MovieReservationWebSocketServer extends WebSocketServer {
             // TODO: Tutaj obsługa dodawania filmu do bazy danych
             // Przykład: ADD_MOVIE:Title:Description:Language:Genre:Duration:ReleaseDate(YYYY-MM-DD):PosterURL:AudioType
             conn.send("MESSAGE_ACK: " + message); // Potwierdzenie otrzymania wiadomości
+
+        } else if (message.startsWith("REGISTER:")) {
+            String[] parts = message.substring(9).split(":"); // REGISTER:user:email:password:phone
+            if (parts.length == 4) {
+                String username = parts[0];
+                String email = parts[1];
+                String password = parts[2];
+                String phone = parts[3];
+                try {
+                    registerUser(username, email, password, phone);
+                    conn.send("REGISTER_SUCCESS: Created " + username + "!");
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    conn.send("SERVER_ERROR: Database error during register.");
+                }
+            } else {
+                conn.send("REGISTER_FAILED: Missing data.");
+            }
         } else {
             conn.send("UNKNOWN_COMMAND: " + message);
         }
     }
+
 
     @Override
     public void onError(WebSocket conn, Exception ex) {
@@ -120,6 +140,19 @@ public class MovieReservationWebSocketServer extends WebSocketServer {
             stmt.setString(2, password);
             ResultSet rs = stmt.executeQuery();
             return rs.next(); // Zwróci true, jeśli znajdzie użytkownika
+        }
+    }
+
+    private void registerUser(String username, String email, String password, String phone)throws SQLException{
+        String sql = "INSERT INTO \"user\" (name, email, password, phone_number) VALUES (?, ?, ?, ?)";
+        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, username);
+            stmt.setString(2, email);
+            stmt.setString(3, password);
+            stmt.setString(4, phone);
+            stmt.execute();
         }
     }
 
