@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-// mam nadzieje ze to dziala
+// TODO: Trzeba bedzie podpiac to potem do wszystkiego
 
 
 public class PaymentController {
