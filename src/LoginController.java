@@ -107,7 +107,7 @@ public class LoginController {
 
                             //odczekaj 2 sekundy, a potem zamnij okno rejestracji
                             PauseTransition delay = new PauseTransition(Duration.seconds(2));
-                            reg.setMessageLabel("Registered successfuly!!!!");//przekazanie wiadomości do RegisterControll.messageLabel
+                            reg.setMessageLabel("Registered successfuly!!!!", "GREEN");//przekazanie wiadomości do RegisterControll.messageLabel
 
                             delay.setOnFinished(event -> {//to się dzieje po skończeniu opóźnienia
                                 try {
@@ -128,6 +128,10 @@ public class LoginController {
                             });
 
                             delay.play();//włączenie opóźnienia
+                        }
+                        else if (message.startsWith("REGISTER_FAILED: User exsist.")) {
+                            reg.setMessageLabel("User already exists", "RED");
+
                         }
                         else if (message.startsWith("SERVER_ERROR:")) {
                             messageLabel.setText(message.substring(13));
