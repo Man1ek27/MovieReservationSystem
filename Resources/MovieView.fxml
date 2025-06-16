@@ -48,8 +48,8 @@
             <TextField fx:id="posterUrlField" promptText="Wpisz URL plakatu filmu'" />
         </children>
     </HBox>
-    <ComboBox fx:id="audioTypeComboBox" prefWidth="150.0" />
+    <ComboBox fx:id="audioTypeComboBox" prefWidth="150.0" promptText="Wybierz typ audio" />
 
-    <Button fx:id="saveButton" text="Zapisz" onAction="#onSaveButtonClick"/>
+    <Button fx:id="saveButton" onAction="#onSaveButtonClick" text="Zapisz" />
 
 </VBox>
