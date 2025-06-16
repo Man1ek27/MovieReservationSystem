@@ -15,6 +15,15 @@ public class Theatre {
 
     static private int id = 0;
 
+    public Theatre(int theatreId, String name, String address, String city) {
+        this.theatreId = theatreId;
+        this.name = name;
+        this.address = address;
+        this.city = city;
+        this.screens = new ArrayList<>();
+    }
+
+
     public Theatre(String name, String address, String city) {
         this.theatreId = ++id;
         this.name = name;

@@ -46,7 +46,7 @@ public class AdminDashboardController {
     @FXML
     private void onAddMovieButtonClick() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/MovieView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/MovieAddView.fxml"));
             Parent root = loader.load();
 
             Stage stage = new Stage();
