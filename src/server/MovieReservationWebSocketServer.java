@@ -33,6 +33,7 @@ public class MovieReservationWebSocketServer extends WebSocketServer {
                 }
             }
 
+
             // Sprawdź usera
             String sqlUser = "SELECT * FROM \"user\" WHERE name = ? AND password = ?";
             try (PreparedStatement stmtUser = conn.prepareStatement(sqlUser)) {
