@@ -103,8 +103,13 @@ public class MovieReservationWebSocketServer extends WebSocketServer {
                 String password = parts[2];
                 String phone = parts[3];
                 try {
-                    registerUser(username, email, password, phone);
-                    conn.send("REGISTER_SUCCESS: Created " + username + "!");
+                    if(userNotINBaze(username, email)){
+                        registerUser(username, email, password, phone);
+                        conn.send("REGISTER_SUCCESS: Created " + username + "!");
+                    }
+                    else{
+                        conn.send("REGISTER_FAILED: User exsist.");
+                    }
 
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -132,14 +137,14 @@ public class MovieReservationWebSocketServer extends WebSocketServer {
     }
 
     // Metoda do uwierzytelniania użytkownika w bazie danych
-    private boolean authenticateUser(String username, String password) throws SQLException {
-        String sql = "SELECT user_id FROM \"user\" WHERE name = ? AND password = ?";
+    private boolean userNotINBaze(String username, String email) throws SQLException {
+        String sql = "SELECT user_id FROM \"user\" WHERE name = ? OR email = ?";
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, username);
-            stmt.setString(2, password);
+            stmt.setString(2, email);
             ResultSet rs = stmt.executeQuery();
-            return rs.next(); // Zwróci true, jeśli znajdzie użytkownika
+            return !rs.next(); // Zwróci false, jeśli znajdzie użytkownika
         }
     }
 
