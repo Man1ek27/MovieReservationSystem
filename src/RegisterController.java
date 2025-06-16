@@ -27,13 +27,13 @@ public class RegisterController {
     }
 
     @FXML
-    public void handleRegister(ActionEvent event){
+    public void handleRegister(ActionEvent event){//przycisk register
         User user = new User(username.getText(), email.getText(), password.getText(), phone.getText());
         String repass = reppassword.getText();
 
-        System.out.println(user.getPassword());
-        System.out.println(repass);
-        if(!user.getPassword().equals(repass)){
+//        System.out.println(user.getPassword());
+//        System.out.println(repass);
+        if(!user.getPassword().equals(repass)){//Sprawdzenie czy hasła są takie same
             messageLabel.setText("ERROR: Passwords do not match!");
             messageLabel.setTextFill(new Color(1,0,0,1));
             return;
