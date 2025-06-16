@@ -18,6 +18,7 @@ public class TheatreService {
              ResultSet rs = stmt.executeQuery(query)) {
             while (rs.next()) {
                 Theatre theatre = new Theatre(
+                        rs.getInt("theatre_id"),    // dodaj id
                         rs.getString("name"),
                         rs.getString("address"),
                         rs.getString("city")

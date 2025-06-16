@@ -56,6 +56,10 @@ public class Movie {
         this.managers = new ArrayList<>();
     }
 
+    @Override
+    public String toString() {
+        return title;  // lub np. title + " (" + director + ")"
+    }
 
 
     //ADD Manager

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="src.MoviesController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <Label fx:id="theatreLabel" layoutX="20" layoutY="20" text="Teatr" />
+    <ListView fx:id="moviesListView" layoutX="20" layoutY="60" prefWidth="560" prefHeight="300"/>
+
+</AnchorPane>

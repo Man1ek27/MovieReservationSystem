@@ -25,6 +25,16 @@ public class Screen {
         this.shows = new ArrayList<>();
     }
 
+    public Screen(int screenId, String name, int capacity, int theatreId) {
+        this.screenId = screenId;
+        this.name = name;
+        this.capacity = capacity;
+        this.theatreId = theatreId;
+        this.rows = new ArrayList<>();
+        this.shows = new ArrayList<>();
+    }
+
+
     //konstruktor z theatre
     public Screen(String name, int capacity, Theatre theatre, List<Row> rows) {
         this.screenId = ++id;

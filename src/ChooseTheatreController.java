@@ -36,8 +36,21 @@ public class ChooseTheatreController {
             return;
         }
 
-        System.out.println("Wybrano teatr: " + selected.getName());
-        // Możesz tu załadować kolejny widok np. z filmami w tym teatrze
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/MoviesView.fxml"));
+            Parent root = loader.load();
+
+            MoviesController controller = loader.getController();
+            controller.initData(selected, new MovieService()); // przekaż wybrany teatr i serwis do filmów
+
+            Stage stage = (Stage) theatreListView.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Filmy");
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

@@ -2,15 +2,12 @@ package src;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.time.ZoneId;
 import java.util.Date;
 
-public class MovieController {
+public class MovieAddController {
 
     @FXML private TextField titleField;
     @FXML private TextField descriptionField;
