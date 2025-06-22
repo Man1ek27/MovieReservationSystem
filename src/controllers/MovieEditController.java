@@ -1,10 +1,10 @@
-package src;
+package src.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import src.Movie;
+import src.MovieService;
 
 public class MovieEditController {
 

@@ -1,4 +1,4 @@
-package src;
+package src.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,6 +13,9 @@ import javafx.scene.control.cell.TextFieldTableCell;
 
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
+import src.AdminDashboardController;
+import src.MovieService;
+import src.User;
 
 import java.sql.*;
 

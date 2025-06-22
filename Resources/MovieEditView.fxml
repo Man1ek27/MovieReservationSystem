@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="src.MovieEditController">
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="src.controllers.MovieEditController">
     <center>
         <GridPane hgap="10" vgap="10">
             <padding>
