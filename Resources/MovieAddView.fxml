@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="394.0" prefWidth="400" spacing="10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.controllers.MovieController">
+<VBox alignment="CENTER" prefHeight="394.0" prefWidth="400" spacing="10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.MovieAddController">
 
     <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Dodaj nowy film" />
 
@@ -48,8 +48,8 @@
             <TextField fx:id="posterUrlField" promptText="Wpisz URL plakatu filmu'" />
         </children>
     </HBox>
-    <ComboBox fx:id="audioTypeComboBox" prefWidth="150.0" />
+    <ComboBox fx:id="audioTypeComboBox" prefWidth="150.0" promptText="Wybierz typ audio" />
 
-    <Button fx:id="saveButton" text="Zapisz" onAction="#onSaveButtonClick"/>
+    <Button fx:id="saveButton" onAction="#onSaveButtonClick" text="Zapisz" />
 
 </VBox>

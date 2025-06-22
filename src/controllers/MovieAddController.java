@@ -9,7 +9,7 @@ import src.MovieService;
 import java.time.ZoneId;
 import java.util.Date;
 
-public class MovieController {
+public class MovieAddController {
 
     @FXML private TextField titleField;
     @FXML private TextField descriptionField;

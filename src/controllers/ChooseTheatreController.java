@@ -1,10 +1,15 @@
 package src.controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import src.Theatre;
 import src.TheatreService;
+
+import javafx.stage.Stage;
 
 import java.util.List;
 
@@ -34,8 +39,36 @@ public class ChooseTheatreController {
             return;
         }
 
-        System.out.println("Wybrano teatr: " + selected.getName());
-        // Możesz tu załadować kolejny widok np. z filmami w tym teatrze
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/MoviesView.fxml"));
+            Parent root = loader.load();
+
+            MoviesController controller = loader.getController();
+            controller.initData(selected, new MovieService()); // przekaż wybrany teatr i serwis do filmów
+
+            Stage stage = (Stage) theatreListView.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Filmy");
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleLogout() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/login.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) theatreListView.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Logowanie");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
 

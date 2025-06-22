@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="src.controllers.ChooseTheatreController">
+
+    <center>
+<VBox spacing="10" >
 <VBox spacing="10" xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="src.controllers.ChooseTheatreController">
@@ -9,3 +13,13 @@
     <ListView fx:id="theatreListView" prefWidth="400" prefHeight="300"/>
     <Button text="Dalej" onAction="#onNextButtonClick"/>
 </VBox>
+    </center>
+
+<bottom>
+<Button text="Wyloguj się"
+        onAction="#handleLogout"
+        prefWidth="120"
+        BorderPane.alignment="CENTER"
+        style="-fx-font-size: 14px; -fx-background-color: #DD4444; -fx-text-fill: white; -fx-padding: 8px;" />
+</bottom>
+</BorderPane>
