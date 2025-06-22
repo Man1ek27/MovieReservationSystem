@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import src.controllers.SceneController;
 import src.server.MovieReservationWebSocketServer; // Import nowej klasy serwera
 
 
@@ -14,7 +15,6 @@ public class Main extends Application {
     private static MovieReservationWebSocketServer webSocketServer; // Statyczna referencja do serwera
 
     public static void main(String[] args) throws Exception {
-        // Uruchom serwer WebSocket w osobnym wątku, aby nie blokował aplikacji JavaFX
         int port = 8887;
         webSocketServer = new MovieReservationWebSocketServer(port);
         webSocketServer.start(); // Startuje serwer w tle
@@ -30,6 +30,19 @@ public class Main extends Application {
         primaryStage.setTitle("Logowanie");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/sceneView.fxml"));
+//        Parent root = loader.load();
+//        primaryStage.setTitle("Wybór miejsc");
+//        SceneController controller = loader.getController();
+//        controller.setScreenId(30);//// tutaj zmieniacie numer Sali
+//        primaryStage.setScene(new Scene(root));
+//        primaryStage.show();
+
+        //Szybkie wytłumacznie jak to działa: zmieniacie tylko i wyłącznie numer wyświetlanej sali
+        //reszta działa sama
+
+
     }
 
     @Override

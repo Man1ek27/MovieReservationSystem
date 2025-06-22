@@ -1,17 +1,11 @@
-package src;
+package src.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
 import javafx.scene.paint.Color; // Dodaj import dla Color
 import org.java_websocket.client.WebSocketClient;
-import org.java_websocket.handshake.ServerHandshake;
-
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 
 // TODO: Trzeba bedzie podpiac to potem do wszystkiego
 

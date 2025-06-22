@@ -18,6 +18,12 @@ public class Row {
         this.rowId = ++ id;
     }
 
+    public Row(int rowId, String rowType, ArrayList<Seat> es) {
+        this.rowId = rowId;
+        this.rowType = rowType;
+        this.seats = es;
+    }
+
     //ADD seat
     public void addSeat(Seat seat){
         seats.add(seat);
@@ -26,6 +32,9 @@ public class Row {
     //GETTERY
     public ArrayList<Seat> getSeats() {return seats;}
     public int getRowId() {return rowId;}
+    public int getSize(){
+        return seats.size();
+    }
 
     //SETTERY
     public void setSeats(ArrayList<Seat> seats) {this.seats = seats;}
