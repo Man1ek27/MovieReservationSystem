@@ -1,42 +1,80 @@
 package src;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.Window;
+
+import java.io.IOException;
 
 public class AdminDashboardController {
 
-    @FXML
-    private ListView<String> moviesListView;
-
     private MovieService movieService;
+
+    @FXML
+    private Button logoutButton;
 
     public void setMovieService(MovieService movieService) {
         this.movieService = movieService;
-        loadMovies();
     }
 
-    private void loadMovies() {
-        moviesListView.getItems().clear();
-        for (Movie m : movieService.getAllMovies()) {
-            moviesListView.getItems().add(m.getTitle());
+
+    @FXML
+    void handleMoviesPanel(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/MovieManagement.fxml"));
+            Parent root = loader.load();
+
+            // Możesz przekazać MovieService do kontrolera MovieManagement (jeśli trzeba)
+            MovieManagementController controller = loader.getController();
+            controller.setMovieService(this.movieService); // jeśli masz taką metodę
+            controller.loadMovies();
+
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Zarządzanie filmami");
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     @FXML
-    private void handleLogout() {
+    private void handleTheatresPanel(ActionEvent event) {
+        switchScene("../Resources/TheatreView.fxml", "Panel Kin");
+    }
+
+    @FXML
+    private void handleUsersPanel() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/UserManagement.fxml"));
+            Parent userManagementRoot = loader.load();
+
+            UserManagementController controller = loader.getController();
+            controller.setMovieService(this.movieService);  // bardzo ważne — przekazujemy dalej movieService
+
+            Stage stage = (Stage) logoutButton.getScene().getWindow();
+            stage.getScene().setRoot(userManagementRoot);
+            stage.setTitle("Zarządzanie użytkownikami");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void switchScene(String fxmlPath, String title) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent root = loader.load();
 
-            Stage stage = (Stage) moviesListView.getScene().getWindow();
+            Stage stage = (Stage) Stage.getWindows().filtered(Window::isShowing).get(0);
             stage.setScene(new Scene(root));
-            stage.setTitle("Logowanie");
+            stage.setTitle(title);
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -44,25 +82,21 @@ public class AdminDashboardController {
     }
 
     @FXML
-    private void onAddMovieButtonClick() {
+    private void handleLogout() {
+        // zamiast: Stage stage = (Stage) moviesListView.getScene().getWindow();
+        // użyj np. innego elementu, który faktycznie istnieje, np. logoutButton:
+
+        Stage stage = (Stage) logoutButton.getScene().getWindow();
+
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/MovieAddView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/login.fxml"));
             Parent root = loader.load();
-
-            Stage stage = new Stage();
-            stage.setTitle("Dodaj film");
             stage.setScene(new Scene(root));
-            stage.initModality(Modality.APPLICATION_MODAL);  // bardzo ważne - blokuje główne okno
-            stage.showAndWait();  // czekaj aż okno zostanie zamknięte
-
-            // Po zamknięciu formularza - odśwież listę filmów
-            loadMovies();
-        } catch (Exception e) {
+            stage.setTitle("Logowanie");
+            stage.show();
+        } catch (IOException e) {
             e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Nie udało się otworzyć formularza dodawania filmu.");
-            alert.showAndWait();
         }
     }
-
 
 }
