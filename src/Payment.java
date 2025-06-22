@@ -1,5 +1,6 @@
 package src;
 
+
 public class Payment {
     private int paymentId;
     private double amount;
@@ -14,6 +15,13 @@ public class Payment {
 
     static private int id =0;
 
+    /**
+     * Klasa zajmująca się przetwarzaniem płatności
+     * @param amount Kwota płatności
+     * @param paymentMethod Metoda płatności
+     * @param transactionId Id płatności
+     * @param bookingId Id powiązanej rezerwacji
+     */
     public Payment(double amount, String paymentMethod, int transactionId, int bookingId){
         this.paymentId = ++id;
         this.amount = amount;
@@ -23,6 +31,10 @@ public class Payment {
     }
 
     //GETTERS
+
+    /**
+     * Lista Getterów
+     */
     public int getPaymentId() {return paymentId;}
     public int getBookingId() {return bookingId;}
     public boolean isPaymentStatus() {return paymentStatus;}
@@ -31,6 +43,9 @@ public class Payment {
     public int getTransactionId() {return transactionId;}
 
     //SETTERS
+    /**
+     * Lista Setterów
+     */
     public void setPaymentId(int paymentId) {this.paymentId = paymentId;}
     public void setAmount(double amount) {this.amount = amount;}
     public void setPaymentMethod(String paymentMethod) {this.paymentMethod = paymentMethod;}

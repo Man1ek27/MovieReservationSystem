@@ -15,6 +15,13 @@ public class Theatre {
 
     static private int id = 0;
 
+    /**
+     * Klasa implementująca dany kino.
+     * @param theatreId id kina
+     * @param name nazwa kina
+     * @param address adres kina
+     * @param city miasto kina
+     */
     public Theatre(int theatreId, String name, String address, String city) {
         this.theatreId = theatreId;
         this.name = name;
@@ -33,11 +40,18 @@ public class Theatre {
     }
 
     //ADD screen
+
+    /**
+     * Metoda dodająca ekran
+     */
     public void addScreen(Screen screen){
         screens.add(screen);
     }
 
     //GETTERS
+    /**
+     * Lista Getterów
+     */
     public int getTheatreId() {return theatreId;}
     public String getName() {return name;}
     public String getAddress() {return address;}
@@ -46,6 +60,9 @@ public class Theatre {
     public List<Screen> getScreens() {return screens;}
 
     //SETTERS
+    /**
+     * Lista Setterów
+     */
     public void setTheatreId(int theatreId) {this.theatreId = theatreId;}
     public void setName(String name) {this.name = name;}
     public void setAddress(String address) {this.address = address;}

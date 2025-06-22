@@ -13,6 +13,13 @@ public class Admin {
 
 
     static private int id =0;
+
+    /**
+     * Klasa admin
+     * @param name nazwa admina
+     * @param email mail
+     * @param password halso
+     */
     public Admin(String name, String email, String password) {
         this.adminId = ++id;
         this.name = name;
@@ -23,11 +30,21 @@ public class Admin {
     }
 
     //ADD Theatre
+
+    /**
+     * Dodaje teatr do listy teatrów zarządzanych przez admina
+     * @param theatre
+     */
     public void addTheatre(Theatre theatre){
         managedTheatres.add(theatre);
     }
 
     //ADD Movie
+
+    /**
+     * Dodaje film do listy zarządzanych Movie
+     * @param movie
+     */
     public void addMovie(Movie movie){
         managedMovies.add(movie);
     }
@@ -35,6 +52,10 @@ public class Admin {
 
 
     //GETTERS
+
+    /**
+     * Lista getterów
+     */
     public List<Movie> getManagedMovies() {return managedMovies;}
     public int getAdminId() {return adminId;}
     public String getName() {return name;}
@@ -43,6 +64,9 @@ public class Admin {
     public List<Theatre> getManagedTheatres() {return managedTheatres;}
 
     //SETTERS
+    /**
+     * Lista setterów
+     */
     public void setAdminId(int adminId) {this.adminId = adminId;}
     public void setPassword(String password) {this.password = password;}
     public void setName(String name) {this.name = name;}

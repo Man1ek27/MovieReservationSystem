@@ -12,6 +12,13 @@ public class Booking {
 
     static private int id =0;
 
+    /**
+     * Klasa booking-przedstawiająca wybraną rezerwację
+     * @param time czas rezerwacji
+     * @param totalAmount cena rezerwacji
+     * @param userId powiązany user, który realizuje rezerwacje
+     * @param showId powiązany seans
+     */
     public Booking(Date time, double totalAmount, int userId, int showId){
         this.bookingId = ++id;
         this.bookingTime = time;
@@ -20,10 +27,11 @@ public class Booking {
         this.showId = showId;
     }
 
-
-    // Możliwe wartości: PENDING, CONFIRMED, CANCELLED
-
     //GETTERS
+    /**
+     * Lista getterów
+     * Możliwe wartości: PENDING, CONFIRMED, CANCELLED
+     */
     public int getBookingId() {return bookingId;}
     public String getStatus() {return status;}
     public Date getBookingTime() {return bookingTime;}
@@ -32,6 +40,9 @@ public class Booking {
     public int getShowId() {return showId;}
 
     //SETTERS
+    /**
+     * Lista setterów
+     */
     public void setBookingId(int bookingId) {this.bookingId = bookingId;}
     public void setShowId(int showId) {this.showId = showId;}
     public void setBookingTime(Date bookingTime) {this.bookingTime = bookingTime;}

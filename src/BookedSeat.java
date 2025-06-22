@@ -9,6 +9,13 @@ public class BookedSeat {
 
     private static int id = 0;
 
+    /**
+     * Klasa bookedSeat
+     * @param bookingId id bookingu
+     * @param seatId id siedzenia
+     * @param showId id danego seansu
+     * @param status status seansu
+     */
     public BookedSeat(int bookingId, int seatId, int showId, String status) {
         this.bookedSeatId = ++id;
         this.bookingId = bookingId;
@@ -18,6 +25,9 @@ public class BookedSeat {
     }
 
     // GETTERY
+    /**
+     * Lista getterów
+     */
     public int getBookedSeatId() { return bookedSeatId; }
     public int getBookingId() { return bookingId; }
     public int getSeatId() { return seatId; }
@@ -25,12 +35,19 @@ public class BookedSeat {
     public String getStatus() { return status; }
 
     // SETTERY
+    /**
+     * Lista setterów
+     */
     public void setBookedSeatId(int bookedSeatId) { this.bookedSeatId = bookedSeatId; }
     public void setBookingId(int bookingId) { this.bookingId = bookingId; }
     public void setSeatId(int seatId) { this.seatId = seatId; }
     public void setShowId(int showId) { this.showId = showId; }
     public void setStatus(String status) { this.status = status; }
 
+    /**
+     * Wykorzystywane do debugowania
+     * @return zwraca standardowe parametry klasy booked seat
+     */
     @Override
     public String toString() {
         return "BookedSeat{" +

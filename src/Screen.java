@@ -25,6 +25,13 @@ public class Screen {
         this.shows = new ArrayList<>();
     }
 
+    /**
+     * Klasa Screen, reprezentująca konkretny ekran/salę w danym Kinie (Theatre)
+     * @param screenId Id ekranu/sali
+     * @param name nazwa ekranu/sali
+     * @param capacity pojemność ekranu/sali
+     * @param theatreId id kina, w którym się znajduje
+     */
     public Screen(int screenId, String name, int capacity, int theatreId) {
         this.screenId = screenId;
         this.name = name;
@@ -36,6 +43,10 @@ public class Screen {
 
 
     //konstruktor z theatre
+
+    /**
+     * Dodatkowy konstruktor z obiektem theatre; patrz konstruktor z theatreId
+     */
     public Screen(String name, int capacity, Theatre theatre, List<Row> rows) {
         this.screenId = ++id;
         this.name = name;
@@ -48,6 +59,11 @@ public class Screen {
 
 
     // Metoda dodaje pojedynczy rząd
+
+    /**
+     * Metoda dodaje rząd
+     * @param row obiekt rzędu
+     */
     public void addRow(Row row) {
         if (this.rows == null) {
             this.rows = new ArrayList<>();
@@ -56,6 +72,11 @@ public class Screen {
     }
 
     //dodajemy show po Id
+
+    /**
+     * dodajemy seans
+     * @param show obiekt seansu
+     */
     public void addShow(Show show) {
         if (this.shows == null) {
             this.shows = new ArrayList<>();
@@ -63,6 +84,11 @@ public class Screen {
         this.shows.add(show);
     }
     // Usuwamy show po Id
+
+    /**
+     * usuwanie show po id
+     * @param showId - id seansu
+     */
     public void removeShow(int showId) {
         if (this.shows != null) {
             this.shows.removeIf(s -> s.getShowId() == showId);
@@ -73,6 +99,10 @@ public class Screen {
 
 
     //GETTERS
+
+    /**
+     * Lista Getterów
+     */
     public int getScreenId() {return screenId;}
     public Theatre getTheatre() {return theatre;}
     public String getName() {return name;}
@@ -93,6 +123,10 @@ public class Screen {
 
 
     //SETTERS
+
+    /**
+     * Lista Setterów
+     */
     public void setScreenId(int screenId) {this.screenId = screenId;}
     public void setName(String name) {this.name = name;}
     public void setCapacity(int capacity) {this.capacity = capacity;}

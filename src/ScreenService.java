@@ -6,6 +6,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Klasa realizująca komunikacje klasy Screen z bazą danych
+ */
 public class ScreenService {
     private static final String DB_URL = "jdbc:postgresql://localhost:5432/moviereservation";
     private static final String DB_USER = "postgres";
