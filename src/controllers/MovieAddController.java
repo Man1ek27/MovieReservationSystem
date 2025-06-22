@@ -57,7 +57,7 @@ public class MovieAddController {
             currentStage.close();
 
 //            // Otwórz nowe okno panelu admina (listy filmów)
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Recources/AdminDashboard.fxml"));
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Recources/AdminDashboard.fxml"));
 //            Parent root = loader.load();
 //
 //            MovieListController controller = loader.getController();

@@ -38,7 +38,7 @@ public class MoviesController {
     @FXML
     private void handleBack() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/ChooseTheatreView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/ChooseTheatreView.fxml"));
             Parent root = loader.load();
 
             ChooseTheatreController controller = loader.getController();

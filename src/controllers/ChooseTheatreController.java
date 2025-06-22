@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
+import src.MovieService;
 import src.Theatre;
 import src.TheatreService;
 
@@ -40,7 +41,7 @@ public class ChooseTheatreController {
         }
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/MoviesView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/MoviesView.fxml"));
             Parent root = loader.load();
 
             MoviesController controller = loader.getController();
@@ -59,7 +60,7 @@ public class ChooseTheatreController {
     @FXML
     private void handleLogout() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/login.fxml"));
             Parent root = loader.load();
 
             Stage stage = (Stage) theatreListView.getScene().getWindow();

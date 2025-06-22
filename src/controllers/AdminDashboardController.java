@@ -33,7 +33,7 @@ public class AdminDashboardController {
     @FXML
     private void handleLogout() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/login.fxml"));
             Parent root = loader.load();
 
             Stage stage = (Stage) moviesListView.getScene().getWindow();
@@ -48,7 +48,7 @@ public class AdminDashboardController {
     @FXML
     private void onAddMovieButtonClick() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/MovieAddView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/MovieAddView.fxml"));
             Parent root = loader.load();
 
             Stage stage = new Stage();
