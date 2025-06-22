@@ -1,4 +1,4 @@
-package src;
+package src.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +8,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import src.Movie;
+import src.MovieService;
 
 public class AdminDashboardController {
 
@@ -31,7 +33,7 @@ public class AdminDashboardController {
     @FXML
     private void handleLogout() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/login.fxml"));
             Parent root = loader.load();
 
             Stage stage = (Stage) moviesListView.getScene().getWindow();
@@ -46,7 +48,7 @@ public class AdminDashboardController {
     @FXML
     private void onAddMovieButtonClick() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/MovieAddView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/MovieAddView.fxml"));
             Parent root = loader.load();
 
             Stage stage = new Stage();

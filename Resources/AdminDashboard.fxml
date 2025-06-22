@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="src.AdminDashboardController">
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="src.controllers.AdminDashboardController">
 
     <top>
         <Label text="Panel Administratora"

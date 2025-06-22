@@ -1,9 +1,11 @@
-package src;
+package src.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
+import src.Movie;
+import src.MovieService;
 
 public class MovieListController {
 
