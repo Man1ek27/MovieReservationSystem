@@ -1,3 +1,5 @@
+package src;
+
 import src.Screen;
 
 import java.sql.*;

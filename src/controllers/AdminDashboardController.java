@@ -1,4 +1,4 @@
-package src;
+package src.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import src.MovieService;
 import src.controllers.MovieManagementController;
 import src.controllers.UserManagementController;
 
