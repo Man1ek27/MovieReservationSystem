@@ -15,6 +15,12 @@ public class Seat  {
         this.seatId = ++id;
     }
 
+    public Seat(int seatId, int seatNumber, String seatType) {
+        this.seatId = seatId;
+        this.seatNumber = seatNumber;
+        this.type = seatType;
+    }
+
 
     //SETTERS
     public void setSeatId(int seatId) { this.seatId = seatId;}

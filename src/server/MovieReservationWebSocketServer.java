@@ -3,6 +3,8 @@ package src.server; // Możesz umieścić w osobnym pakiecie, np. src.server
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
+import src.Row;
+import src.Seat;
 
 import java.net.InetSocketAddress;
 import java.sql.Connection;
@@ -10,6 +12,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 // Możesz umieścić tę klasę w osobnym pliku src/server/MovieReservationWebSocketServer.java
 public class MovieReservationWebSocketServer extends WebSocketServer {
@@ -119,7 +125,22 @@ public class MovieReservationWebSocketServer extends WebSocketServer {
             } else {
                 conn.send("REGISTER_FAILED: Missing data.");
             }
-        } else {
+        } else if (message.startsWith("REQUEST_SEATS:")){
+            int screenId = Integer.parseInt(message.substring("REQUEST_SEATS:".length()));
+
+            // Pobierz dane z bazy PostgreSQL
+            String seatsData = null;
+            try {
+                seatsData = getSeatsFromDatabase(screenId);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+            // Wyślij odpowiedź do klienta
+            conn.send("SEATS_DATA:" + seatsData);
+
+        }
+        else {
             conn.send("UNKNOWN_COMMAND: " + message);
         }
     }
@@ -161,6 +182,50 @@ public class MovieReservationWebSocketServer extends WebSocketServer {
             stmt.execute();
         }
     }
+
+    private String getSeatsFromDatabase(int screenId) throws SQLException{
+        String sql = "SELECT r.row_id, r.row_type, s.seat_id, s.seat_number, s.type\n" +
+                "FROM row r JOIN seat s ON r.row_id = s.row_id\n" +
+                "WHERE r.screen_id = ?\n" +
+                "ORDER BY r.row_id, s.seat_number\n";
+
+        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, screenId);
+            ResultSet rs = stmt.executeQuery();
+
+            // Mapowanie wyników do obiektów
+            Map<Integer, Row> rowMap = new LinkedHashMap<>();
+            while (rs.next()) {
+                int rowId = rs.getInt("row_id");
+                String rowType = rs.getString("row_type");
+                int seatId = rs.getInt("seat_id");
+                int seatNumber = rs.getInt("seat_number");
+                String seatType = rs.getString("type");
+
+                // Pobierz lub utwórz rząd
+                Row row = rowMap.computeIfAbsent(rowId, id -> new Row(rowId, rowType, new ArrayList<>()));
+                // Dodaj miejsce do rzędu
+                row.getSeats().add(new Seat(seatId, seatNumber, seatType));
+            }
+
+            // Budowanie stringa do wysłania po WebSocket
+            StringBuilder result = new StringBuilder();
+            for (Row row : rowMap.values()) {
+                if (result.length() > 0) result.append("|");
+                result.append(row.getRowId()).append(":");
+                List<String> seatStrings = new ArrayList<>();
+                for (Seat seat : row.getSeats()) {
+                    seatStrings.add(seat.getSeatId() + "-" + seat.getSeatNumber() + "-" + seat.getType());
+                }
+                result.append(String.join(",", seatStrings));
+            }
+            return result.toString();
+
+        }
+    }
+
 
     public static void main(String[] args) {
         int port = 8887; // Port dla serwera WebSocket
