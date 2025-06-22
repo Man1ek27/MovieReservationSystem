@@ -6,9 +6,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import src.controllers.MovieManagementController;
+import src.controllers.UserManagementController;
 
 import java.io.IOException;
 

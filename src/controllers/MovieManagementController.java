@@ -1,4 +1,4 @@
-package src;
+package src.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +7,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import src.AdminDashboardController;
+import src.Movie;
+import src.MovieService;
 
 public class MovieManagementController {
 
