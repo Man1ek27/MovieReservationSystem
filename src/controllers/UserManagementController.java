@@ -13,7 +13,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
-import src.AdminDashboardController;
+import src.controllers.AdminDashboardController;
 import src.MovieService;
 import src.User;
 
