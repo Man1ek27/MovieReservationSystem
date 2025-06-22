@@ -18,9 +18,7 @@
       <Label layoutX="14.0" layoutY="69.0" text="Id Rezerwacji:" />
       <Label fx:id="bookingIdLabel" layoutX="138.0" layoutY="69.0" prefWidth="117.0" text="#12345" />
       <ComboBox fx:id="paymentMethodComboBox" layoutX="14.0" layoutY="98.0" prefHeight="24.0" prefWidth="190.0" promptText="Metoda płatności:" />
-      <Button fx:id="payButton" layoutX="452.0" layoutY="362.0" mnemonicParsing="false" text="Wykonaj płatność" >
-         <onAction>#handlePayment</onAction>
-      </Button>
+      <Button fx:id="payButton" layoutX="452.0" layoutY="362.0" mnemonicParsing="false" onAction="#handlePayment" text="Wykonaj płatność" />
       <Label fx:id="messageLabel" layoutX="14.0" layoutY="309.0" prefHeight="77.0" prefWidth="196.0" />
    </children>
 </AnchorPane>
