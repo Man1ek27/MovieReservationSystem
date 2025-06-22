@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import src.AdminDashboardController;
+import src.controllers.AdminDashboardController;
 import src.Movie;
 import src.MovieService;
 
