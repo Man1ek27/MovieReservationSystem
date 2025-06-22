@@ -1,4 +1,4 @@
-package src;
+package src.controllers;
 
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
@@ -10,11 +10,13 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
+import src.AdminDashboardController;
+import src.MovieService;
+import src.TheatreService;
 
 import java.io.IOException;
 import java.net.URI;
@@ -57,7 +59,7 @@ public class LoginController {
 
                                 if ("admin".equalsIgnoreCase(role)) {
                                     try {
-                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/AdminDashboard.fxml"));
+                                        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/AdminDashboard.fxml"));
                                         Parent root = loader.load();
 
                                         // Pobierz kontroler i przekaż mu MovieService (jeśli potrzebujesz)
@@ -75,7 +77,7 @@ public class LoginController {
                                 } else if ("user".equalsIgnoreCase(role)) {
                                     messageLabel.setText("Zalogowano jako zwykły użytkownik.");
                                     // Po poprawnym zalogowaniu jako user
-                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/ChooseTheatreView.fxml"));
+                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/ChooseTheatreView.fxml"));
                                     Parent root = null;
                                     try {
                                         root = loader.load();
@@ -113,7 +115,7 @@ public class LoginController {
                                 try {
                                     if (registerStage != null) registerStage.close();
 
-                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/login.fxml"));
+                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/login.fxml"));
                                     Parent root = loader.load();
 
                                     Stage stage = (Stage) loginField.getScene().getWindow();
@@ -181,7 +183,7 @@ public class LoginController {
 
     @FXML
     void handleRegister(ActionEvent event)throws IOException {
-        FXMLLoader registerLoader = new FXMLLoader(getClass().getResource("../Recources/register.fxml"));
+        FXMLLoader registerLoader = new FXMLLoader(getClass().getResource("../../Resources/register.fxml"));
         Parent root = registerLoader.load();
 
         // Przekaż MovieService do nowego kontrolera, jeśli trzeba

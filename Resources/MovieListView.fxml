@@ -3,6 +3,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.control.*?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="src.MovieListController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="src.controllers.MovieListController">
     <ListView fx:id="moviesListView" layoutX="10" layoutY="10" prefWidth="380" prefHeight="300"/>
 </AnchorPane>
