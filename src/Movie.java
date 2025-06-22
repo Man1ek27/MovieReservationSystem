@@ -29,6 +29,18 @@ public class Movie {
         this.managers = managers;
     }
 
+    /**
+     * Klasa movie, przechowująca informacje o danym filmie
+     * @param movieId id filmu
+     * @param title tytuł filmu
+     * @param description opis filmu
+     * @param language język filmu
+     * @param genre opis gatunku filmu
+     * @param durationMinutes czas trwania filmu
+     * @param releaseDate data wydania filmu
+     * @param posterUrl url do plakatu filmu
+     * @param audioType typ ścieżki dźwiękowej (enum: ORIGINAL, DUBBING, SUBTITLE)
+     */
     public Movie(int movieId, String title, String description, String language, String genre,
                  int durationMinutes, Date releaseDate, String posterUrl, AudioType audioType) {
         this.movieId = movieId;
@@ -43,6 +55,18 @@ public class Movie {
         this.managers = new ArrayList<>();
     }
 
+    /**
+     * Klasa movie, przechowująca informacje o danym filmie
+     * konstruktor bez ID, aby współpracował z bazą danych
+     * @param title tytuł filmu
+     * @param description opis filmu
+     * @param language język filmu
+     * @param genre opis gatunku filmu
+     * @param durationMinutes czas trwania filmu
+     * @param releaseDate data wydania filmu
+     * @param posterUrl url do plakatu filmu
+     * @param audioType typ ścieżki dźwiękowej (enum: ORIGINAL, DUBBING, SUBTITLE)
+     */
     public Movie(String title, String description, String language, String genre,
                  int durationMinutes, Date releaseDate, String posterUrl, AudioType audioType) {
         this.title = title;
@@ -58,16 +82,25 @@ public class Movie {
 
     @Override
     public String toString() {
-        return title;  // lub np. title + " (" + director + ")"
+        return title;
     }
 
 
     //ADD Manager
+
+    /**
+     * Dodaje admina
+     * @param admin - wybrany admin
+     */
     public void addManager(Admin admin){
         managers.add(admin);
     }
 
     //GETTERS
+
+    /**
+     * Lista getterów
+     */
     public int getMovieId() {return movieId;}
     public List<Admin> getManagers() {return managers;}
     public String getTitle() {return title;}
@@ -79,8 +112,10 @@ public class Movie {
     public String getPosterUrl() {return posterUrl;}
     public AudioType getAudioType() {return audioType;}
 
-
     //SETTERS
+    /**
+     * Lista setterów
+     */
     public void setMovieId(int movieId) {this.movieId = movieId;}
     public void setTitle(String title) {this.title = title;}
     public void setDescription(String description) {this.description = description;}

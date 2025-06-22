@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Implementacja komunikacji z bazą danych klasy Movie
+ */
 public class MovieService {
     private static final String DB_URL = "jdbc:postgresql://localhost:5432/moviereservation";
     private static final String DB_USER = "postgres";
@@ -40,6 +43,11 @@ public class MovieService {
         return movies;
     }
 
+    /**
+     * Metoda dodająca film do bazy danych
+     * @param movie - id filmu
+     * @throws Exception - zgłaszamy błąd w razie problemów
+     */
     public Movie addMovie(Movie movie) throws Exception {
         String sql = "INSERT INTO movie (title, description, language, genre, duration_minutes, release_date, poster_url, audio_type) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -83,7 +91,10 @@ public class MovieService {
         }
     }
 
-
+    /**
+     * Usuwanie filmu z bazy danych
+     * @param movieId - id filmu
+     */
     public void deleteMovie(int movieId) {
         String sql = "DELETE FROM movie WHERE movie_id = ?";
 
@@ -97,6 +108,9 @@ public class MovieService {
         }
     }
 
+    /**
+     * Getter z bazy danych
+     */
     public Movie getMovieById(int movieId) {
         String sql = "SELECT * FROM movie WHERE movie_id = ?";
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
@@ -123,6 +137,11 @@ public class MovieService {
         return null;
     }
 
+    /**
+     * Metoda aktualizująca bazę danych
+     * @param movie - dany obiekt movie
+     * @throws SQLException - zgłaszamy błąd
+     */
     public void updateMovie(Movie movie) throws SQLException {
         String sql = "UPDATE movie SET title=?, description=?, language=?, genre=?, duration_minutes=?, release_date=?, poster_url=?, audio_type=? WHERE movie_id=?";
 
@@ -142,8 +161,5 @@ public class MovieService {
             pstmt.executeUpdate();
         }
     }
-
-
-
     // Możesz też dodać metodę filterByTitle używającą SQL
 }

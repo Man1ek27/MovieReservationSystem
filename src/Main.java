@@ -9,7 +9,11 @@ import javafx.stage.Stage;
 import src.controllers.SceneController;
 import src.server.MovieReservationWebSocketServer; // Import nowej klasy serwera
 
-
+/**
+ * Main, który odpowiada za wczytanie pierwszy ekran login.fxml
+ * Setupuje on również webSocketServer w tle.
+ * Kończy działanie serwera razem z zamknięciem programu.
+ */
 public class Main extends Application {
 
     private static MovieReservationWebSocketServer webSocketServer; // Statyczna referencja do serwera
@@ -17,9 +21,8 @@ public class Main extends Application {
     public static void main(String[] args) throws Exception {
         int port = 8887;
         webSocketServer = new MovieReservationWebSocketServer(port);
-        webSocketServer.start(); // Startuje serwer w tle
-
-        launch(args); // Uruchom aplikację JavaFX
+        webSocketServer.start();
+        launch(args);
     }
 
     @Override
@@ -38,16 +41,12 @@ public class Main extends Application {
 //        controller.setScreenId(30);//// tutaj zmieniacie numer Sali
 //        primaryStage.setScene(new Scene(root));
 //        primaryStage.show();
-
         //Szybkie wytłumacznie jak to działa: zmieniacie tylko i wyłącznie numer wyświetlanej sali
         //reszta działa sama
-
-
     }
 
     @Override
     public void stop() throws Exception {
-        // Ważne: Zamknij serwer WebSocket, gdy aplikacja JavaFX się zamyka
         if (webSocketServer != null) {
             webSocketServer.stop();
             System.out.println("WebSocket server stopped.");
