@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
-import src.AdminDashboardController;
+import src.controllers.AdminDashboardController;
 import src.MovieService;
 import src.TheatreService;
 
