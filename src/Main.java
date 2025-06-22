@@ -24,12 +24,25 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // ... reszta kodu JavaFX, która ładuje login.fxml
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/login.fxml"));
+//        // ... reszta kodu JavaFX, która ładuje login.fxml
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/login.fxml"));
+//        Parent root = loader.load();
+//        primaryStage.setTitle("Logowanie");
+//        primaryStage.setScene(new Scene(root));
+//        primaryStage.show();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/sceneView.fxml"));
         Parent root = loader.load();
-        primaryStage.setTitle("Logowanie");
+        primaryStage.setTitle("Wybór miejsc");
+        SceneController controller = loader.getController();
+        controller.setScreenId(1);//// tutaj zmieniacie numer Sali
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+
+        //Szybkie wytłumacznie jak to działa: zmieniacie tylko i wyłącznie numer wyświetlanej sali
+        //reszta działa sama
+
+
     }
 
     @Override

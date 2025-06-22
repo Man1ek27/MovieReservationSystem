@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 
+<VBox alignment="TOP_CENTER" prefHeight="900" prefWidth="1200" spacing="20" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.SceneController">
+    <!-- Ekran kinowy -->
+    <StackPane>
+        <Rectangle arcHeight="40" arcWidth="60" fill="#eeeeee" height="40" stroke="#888" strokeWidth="2" width="500" />
+        <Label style="-fx-font-size: 20px; -fx-text-fill: #bbbbbb; -fx-font-weight: bold;" text="EKRAN" />
+    </StackPane>
 
-<FlowPane fx:id="seatPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SceneController" />
+    <!-- Miejsca -->
+    <GridPane fx:id="seatsGrid" alignment="CENTER" hgap="8" vgap="8" />
+
+    <!-- Legenda -->
+    <HBox alignment="CENTER" spacing="15">
+        <HBox alignment="CENTER" spacing="5">
+            <Rectangle fill="#43a047" height="20" width="20" />
+            <Label text="Miejsca dostępne" />
+        </HBox>
+        <HBox alignment="CENTER" spacing="5">
+            <Rectangle fill="#2196f3" height="20" width="20" />
+            <Label text="Miejsca dla niepełnosprawnych" />
+        </HBox>
+        <HBox alignment="CENTER" spacing="5">
+            <Rectangle fill="#222" height="20" width="20" />
+            <Label text="Wybrane miejsca" />
+        </HBox>
+        <HBox alignment="CENTER" spacing="5">
+            <Rectangle fill="#bdbdbd" height="20" width="20" />
+            <Label text="Miejsca niedostępne" />
+        </HBox>
+    </HBox>
+
+    <!-- Przyciski -->
+    <VBox alignment="CENTER" spacing="10">
+        <Button style="-fx-background-color: #ffcc99; -fx-font-size: 16px; -fx-font-weight: bold;" text="DALEJ" />
+        <Label fx:id="counter" style="-fx-text-fill: #888;" text="(liczba wybranych miejsc: 0)" />
+        <Button style="-fx-background-color: #222; -fx-text-fill: white; -fx-font-size: 16px;" text="WRÓĆ" />
+    </VBox>
+</VBox>
