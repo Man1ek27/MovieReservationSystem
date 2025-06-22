@@ -1,11 +1,10 @@
-package src;
+package src.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
+import src.Movie;
+import src.MovieService;
 
 import java.time.ZoneId;
 import java.util.Date;

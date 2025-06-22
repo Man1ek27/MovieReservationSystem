@@ -1,8 +1,11 @@
-package src;
+package src.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
+import src.Theatre;
+import src.TheatreService;
+
 import java.util.List;
 
 public class ChooseTheatreController {

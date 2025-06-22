@@ -1,14 +1,12 @@
-package src;
+package src.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import org.java_websocket.WebSocket;
 import org.java_websocket.client.WebSocketClient;
-import org.java_websocket.handshake.ServerHandshake;
+import src.User;
 
 
 public class RegisterController {

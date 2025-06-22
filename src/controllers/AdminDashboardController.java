@@ -1,4 +1,4 @@
-package src;
+package src.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +8,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import src.Movie;
+import src.MovieService;
 
 public class AdminDashboardController {
 

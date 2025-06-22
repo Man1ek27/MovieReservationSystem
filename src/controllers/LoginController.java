@@ -1,4 +1,4 @@
-package src;
+package src.controllers;
 
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
@@ -10,11 +10,12 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
+import src.MovieService;
+import src.TheatreService;
 
 import java.io.IOException;
 import java.net.URI;
