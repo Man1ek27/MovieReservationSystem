@@ -177,6 +177,9 @@ public class SceneController {
             default: return "-fx-background-color: #43a047; -fx-text-fill: white;";
         }
 
+    public void initData(Show show, int currentUserId) {
+        this.selectedShow = show;
+
     }
 
 

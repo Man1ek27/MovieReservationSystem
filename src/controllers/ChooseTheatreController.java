@@ -20,6 +20,7 @@ public class ChooseTheatreController {
     private ListView<Theatre> theatreListView;
 
     private TheatreService theatreService;
+    private int currentUserId;
 
     public void setTheatreService(TheatreService service) {
         this.theatreService = service;
@@ -95,6 +96,14 @@ public class ChooseTheatreController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void setCurrentUserId(int currentUserId) {
+        this.currentUserId = currentUserId;
+    }
+
+    public int getCurrentUserId() {
+        return currentUserId;
     }
 }
 

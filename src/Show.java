@@ -9,12 +9,10 @@ public class Show {
     private int movieId;
     private int screenId;
 
-    // licznik do tworzenia prostego ID
     private static int id = 0;
 
     /**
      * Klasa implementująca dany seans
-     * @param showTime - czas seansu
      * @param price - cena biletu
      * @param movieId - id filmu wyświetlanego
      * @param screenId - id powiązanego ekranu/sali
