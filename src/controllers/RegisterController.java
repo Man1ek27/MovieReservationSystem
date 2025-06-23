@@ -2,15 +2,24 @@ package src.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import org.java_websocket.client.WebSocketClient;
 import src.User;
+
+import java.io.IOException;
 
 
 public class RegisterController {
 
+    public AnchorPane back;
     @FXML private TextField username;
     @FXML private TextField email;
     @FXML private PasswordField password;
@@ -67,5 +76,17 @@ public class RegisterController {
             case "RED" ->messageLabel.setTextFill(new Color(1,0,0,1));
             default -> messageLabel.setTextFill(new Color(0,0,0,1));
         }
+    }
+
+    public void handleReturn(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/login.fxml"));
+        Parent root = loader.load();
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle("Logowanie");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+
+        Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.close();
     }
 }
