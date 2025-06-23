@@ -1,29 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
 
-<VBox alignment="TOP_CENTER" prefHeight="700.0" prefWidth="900.0" spacing="10.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.controllers.MoviesController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
-    <Label fx:id="theatreLabel" text="Filmy w kinie: [Nazwa Kina]" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="src.controllers.MoviesController"
+            prefHeight="400.0" prefWidth="600.0">
 
-    <HBox spacing="15.0" VBox.vgrow="ALWAYS">
-        <VBox HBox.hgrow="ALWAYS" spacing="10.0">
-            <Label text="Wybierz film:" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
-            <ListView fx:id="moviesListView" prefHeight="300" prefWidth="300" />
-        </VBox>
+    <Label fx:id="theatreLabel" layoutX="20" layoutY="20" text="Teatr" />
+    <ListView fx:id="moviesListView" layoutX="20" layoutY="60" prefWidth="560" prefHeight="300"/>
 
-        <VBox HBox.hgrow="ALWAYS" spacing="10.0">
-            <Label text="Dostępne seanse dla wybranego filmu:" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
-            <ListView fx:id="showsListView" prefHeight="300" prefWidth="400" />
-        </VBox>
-    </HBox>
-
-    <HBox alignment="CENTER" spacing="20.0">
-        <Button fx:id="backButton" text="Wróć do wyboru kina" onAction="#handleBack" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-size: 16px;" />
-        <Button fx:id="selectShowButton" text="Wybierz seans i przejdź do wyboru miejsc" onAction="#handleSelectShow" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 16px;" />
-    </HBox>
-</VBox>
+</AnchorPane>
