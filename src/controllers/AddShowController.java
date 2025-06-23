@@ -12,9 +12,7 @@ import src.*;
 
 import java.math.BigDecimal;
 import java.sql.*;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.time.*;
 import java.util.Date;
 import java.util.List;
 
@@ -29,6 +27,8 @@ public class AddShowController {
     private Movie movie;
     private Theatre theatre;
     private ShowService showService = new ShowService();
+
+    private Show showToEdit = null;
 
     public void setMovie(Movie movie) {
         this.movie = movie;
@@ -60,9 +60,17 @@ public class AddShowController {
             LocalDateTime showTime = LocalDateTime.parse(date + "T" + time);
             Date legacyDate = java.util.Date.from(showTime.atZone(ZoneId.systemDefault()).toInstant());
 
-            Show show = new Show(legacyDate, price.doubleValue(), movie.getMovieId(), screen.getScreenId());
+            if (showToEdit != null) {
+                showToEdit.setShowTime(legacyDate);
+                showToEdit.setPrice(price.doubleValue());
+                showToEdit.setMovieId(movie.getMovieId());
+                showToEdit.setScreenId(screen.getScreenId());
+                showService.updateShow(showToEdit);
+            } else {
+                Show show = new Show(legacyDate, price.doubleValue(), movie.getMovieId(), screen.getScreenId());
+                saveShowToDatabase(show);
+            }
 
-            saveShowToDatabase(show);
 //            showService.addShow(show);
 
             Stage stage = (Stage) datePicker.getScene().getWindow();
@@ -104,4 +112,36 @@ public class AddShowController {
         Alert alert = new Alert(Alert.AlertType.ERROR, msg);
         alert.showAndWait();
     }
+
+    public void setShowToEdit(Show show) {
+        this.showToEdit = show;
+
+        Date showDate = show.getShowTime();
+
+        if (showDate != null) {
+            // konwersja java.util.Date -> LocalDateTime
+            Instant instant = showDate.toInstant();
+            LocalDateTime showDateTime = instant.atZone(ZoneId.systemDefault()).toLocalDateTime();
+
+            datePicker.setValue(showDateTime.toLocalDate());
+            timeField.setText(showDateTime.toLocalTime().toString());
+        } else {
+            System.err.println("show_time jest null");
+        }
+
+        priceField.setText(String.valueOf(show.getPrice()));
+
+        for (Screen screen : screenComboBox.getItems()) {
+            if (screen.getScreenId() == show.getScreenId()) {
+                screenComboBox.setValue(screen);
+                break;
+            }
+        }
+    }
+
+
+
+
+
+
 }
