@@ -7,7 +7,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import src.Theatre;
 import src.TheatreService;
-import src.AdminDashboardController;
+import src.controllers.AdminDashboardController;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
