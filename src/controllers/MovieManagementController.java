@@ -60,7 +60,7 @@ public class MovieManagementController {
     @FXML
     private void onAddMovieButtonClick() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/MovieAddView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/MovieAddView.fxml"));
             Parent root = loader.load();
 
             Stage stage = new Stage();
@@ -80,7 +80,7 @@ public class MovieManagementController {
     @FXML
     private void handleBackToAdminDashboard() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Resources/AdminDashboard.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/AdminDashboard.fxml"));
             Parent root = loader.load();
 
             AdminDashboardController controller = loader.getController();
@@ -105,7 +105,7 @@ public class MovieManagementController {
         }
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/MovieEditView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/MovieEditView.fxml"));
             Parent root = loader.load();
 
             MovieEditController editController = loader.getController();

@@ -29,7 +29,7 @@ public class AdminDashboardController {
     @FXML
     void handleMoviesPanel(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/MovieManagement.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/MovieManagement.fxml"));
             Parent root = loader.load();
 
             // Możesz przekazać MovieService do kontrolera MovieManagement (jeśli trzeba)
@@ -49,13 +49,13 @@ public class AdminDashboardController {
 
     @FXML
     private void handleTheatresPanel(ActionEvent event) {
-        switchScene("../Resources/TheatreView.fxml", "Panel Kin");
+        switchScene("../../Resources/TheatreView.fxml", "Panel Kin");
     }
 
     @FXML
     private void handleUsersPanel() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/UserManagement.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/UserManagement.fxml"));
             Parent userManagementRoot = loader.load();
 
             UserManagementController controller = loader.getController();
@@ -91,7 +91,7 @@ public class AdminDashboardController {
         Stage stage = (Stage) logoutButton.getScene().getWindow();
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/login.fxml"));
             Parent root = loader.load();
             stage.setScene(new Scene(root));
             stage.setTitle("Logowanie");
