@@ -81,6 +81,7 @@
             <PasswordField fx:id="password" layoutX="231.0" layoutY="135.0" prefHeight="25.0" prefWidth="173.0" />
             <PasswordField fx:id="reppassword" layoutX="231.0" layoutY="168.0" prefHeight="25.0" prefWidth="173.0" />
             <Button fx:id="registerButton" layoutX="237.0" layoutY="331.0" mnemonicParsing="false" onAction="#handleRegister" prefHeight="36.0" prefWidth="160.0" text="Register" />
+            <Button layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleReturn" prefHeight="25.0" prefWidth="61.0" text="⬅" />
       </children>
     </AnchorPane>
   </children>
