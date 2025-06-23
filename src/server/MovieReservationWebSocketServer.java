@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 // Możesz umieścić tę klasę w osobnym pliku src/server/MovieReservationWebSocketServer.java
 public class MovieReservationWebSocketServer extends WebSocketServer {
@@ -140,6 +141,28 @@ public class MovieReservationWebSocketServer extends WebSocketServer {
             conn.send("SEATS_DATA:" + seatsData);
 
         }
+        else if (message.startsWith("RESERVED_SEATS:")){
+
+            //Wyciąganie intów po dwukropku
+            String numbersPart = message.substring("RESERVED_SEATS:".length()).trim();
+
+            List<Integer> seats = new ArrayList<>();
+            if (!numbersPart.isEmpty()) {
+                String[] numbers = numbersPart.split("-");
+                for (String num : numbers) {
+                    if (!num.isEmpty()) { // dodatkowa ochrona
+                        seats.add(Integer.parseInt(num));
+                    }
+                }
+            }
+
+            try {
+                updateSeats(seats);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
         else {
             conn.send("UNKNOWN_COMMAND: " + message);
         }
@@ -184,7 +207,7 @@ public class MovieReservationWebSocketServer extends WebSocketServer {
     }
 
     private String getSeatsFromDatabase(int screenId) throws SQLException{
-        String sql = "SELECT r.row_id, r.row_type, s.seat_id, s.seat_number, s.type\n" +
+        String sql = "SELECT r.row_id, r.row_type, s.seat_id, s.seat_number, s.type, s.status\n" +
                 "FROM row r JOIN seat s ON r.row_id = s.row_id\n" +
                 "WHERE r.screen_id = ?\n" +
                 "ORDER BY r.row_id, s.seat_number\n";
@@ -203,11 +226,12 @@ public class MovieReservationWebSocketServer extends WebSocketServer {
                 int seatId = rs.getInt("seat_id");
                 int seatNumber = rs.getInt("seat_number");
                 String seatType = rs.getString("type");
+                boolean status = rs.getBoolean("status");
 
                 // Pobierz lub utwórz rząd
                 Row row = rowMap.computeIfAbsent(rowId, id -> new Row(rowId, rowType, new ArrayList<>()));
                 // Dodaj miejsce do rzędu
-                row.getSeats().add(new Seat(seatId, seatNumber, seatType));
+                row.getSeats().add(new Seat(seatId, seatNumber, seatType, status));
             }
 
             // Budowanie stringa do wysłania po WebSocket
@@ -217,12 +241,36 @@ public class MovieReservationWebSocketServer extends WebSocketServer {
                 result.append(row.getRowId()).append(":");
                 List<String> seatStrings = new ArrayList<>();
                 for (Seat seat : row.getSeats()) {
-                    seatStrings.add(seat.getSeatId() + "-" + seat.getSeatNumber() + "-" + seat.getType());
+                    seatStrings.add(seat.getSeatId() + "-" + seat.getSeatNumber() + "-" + seat.getType() + "-" + seat.isReserved());
                 }
                 result.append(String.join(",", seatStrings));
             }
             return result.toString();
 
+        }
+    }
+
+
+    private void updateSeats(List<Integer> ids) throws SQLException {
+        if (ids == null || ids.isEmpty()) return; // nic nie rób, jeśli lista pusta
+
+        String placeholders = ids.stream()
+                .map(i -> "?")
+                .collect(Collectors.joining(","));
+
+        String sql = "UPDATE seat SET status = true WHERE seat_id IN (" + placeholders + ")";
+
+        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            // Ustawiamy parametry
+            for (int i = 0; i < ids.size(); i++) {
+                stmt.setInt(i + 1, ids.get(i));
+            }
+
+            System.out.println("Aktualizuję miejsca: " + ids);
+            int updated = stmt.executeUpdate();
+            System.out.println("Zmieniono wierszy: " + updated);
         }
     }
 
