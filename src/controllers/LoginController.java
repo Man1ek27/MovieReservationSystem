@@ -24,12 +24,15 @@ import java.net.URISyntaxException;
 import java.util.concurrent.CountDownLatch; // Do synchronizacji w testach/przykładach
 
 public class LoginController {
-    @FXML private TextField loginField;
-    @FXML private PasswordField passwordField;
-    @FXML private Label messageLabel;
+    @FXML
+    public TextField loginField;
+    @FXML
+    public PasswordField passwordField;
+    @FXML
+    public Label messageLabel;
 
 
-    private WebSocketClient wsClient;
+    public WebSocketClient wsClient;
     private final CountDownLatch latch = new CountDownLatch(1); // Do synchronizacji odpowiedzi serwera
     private Stage registerStage;
     private  RegisterController reg;
@@ -162,7 +165,7 @@ public class LoginController {
     }
 
     @FXML
-    void handleLogin(ActionEvent event) {
+    public void handleLogin(ActionEvent event) {
         String login = loginField.getText();
         String pass = passwordField.getText();
 

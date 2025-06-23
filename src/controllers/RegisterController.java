@@ -20,12 +20,18 @@ import java.io.IOException;
 public class RegisterController {
 
     public AnchorPane back;
-    @FXML private TextField username;
-    @FXML private TextField email;
-    @FXML private PasswordField password;
-    @FXML private PasswordField reppassword;
-    @FXML private TextField phone;
-    @FXML private Label messageLabel;
+    @FXML
+    public TextField username;
+    @FXML
+    public TextField email;
+    @FXML
+    public PasswordField password;
+    @FXML
+    public PasswordField reppassword;
+    @FXML
+    public TextField phone;
+    @FXML
+    public Label messageLabel;
 
     private WebSocketClient wsClient;
 
