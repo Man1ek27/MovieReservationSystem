@@ -2,7 +2,6 @@ package src;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class ShowService {
@@ -21,7 +20,7 @@ public class ShowService {
 
             try (ResultSet rs = pstmt.executeQuery()) {
                 while (rs.next()) {
-                    Date showTime = rs.getTime("show_time");
+                    Timestamp showTime = rs.getTimestamp("show_time");
 
                     Show show = new Show(
                             showTime,
@@ -50,7 +49,7 @@ public class ShowService {
 
             try (ResultSet rs = pstmt.executeQuery()) {
                 while (rs.next()) {
-                    Date showTime = rs.getTime("show_time");
+                    Timestamp showTime = rs.getTimestamp("show_time");
 
                     Show show = new Show(
                             showTime,
@@ -68,7 +67,6 @@ public class ShowService {
         return shows;
     }
 
-
     public List<Show> getShowsForMovieInScreen(int movieId, int screenId) {
         List<Show> shows = new ArrayList<>();
         String sql = "SELECT * FROM show WHERE movie_id = ? AND screen_id = ? ORDER BY show_time";
@@ -81,7 +79,7 @@ public class ShowService {
 
             try (ResultSet rs = pstmt.executeQuery()) {
                 while (rs.next()) {
-                    Date showTime = rs.getTime("show_time");
+                    Timestamp showTime = rs.getTimestamp("show_time");
 
                     Show show = new Show(
                             showTime,
@@ -116,31 +114,42 @@ public class ShowService {
         }
     }
 
-
     public void updateShow(Show show) throws SQLException {
-        String sql = "UPDATE show SET show_time=?, price=?, movie_id=?, screen_id=? WHERE show_id=?";
+        String sql = "UPDATE show SET show_time = ?, price = ?, movie_id = ?, screen_id = ? WHERE show_id = ?";
 
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            pstmt.setTime(1, new java.sql.Time(show.getShowTime().getTime()));
-            pstmt.setDouble(3, show.getPrice());
-            pstmt.setInt(4, show.getMovieId());
-            pstmt.setInt(5, show.getScreenId());
-            pstmt.setInt(6, show.getShowId());
+            pstmt.setTimestamp(1, new java.sql.Timestamp(show.getShowTime().getTime()));
+            pstmt.setDouble(2, show.getPrice());
+            pstmt.setInt(3, show.getMovieId());
+            pstmt.setInt(4, show.getScreenId());
+            pstmt.setInt(5, show.getShowId());
 
             pstmt.executeUpdate();
         }
     }
 
     public void deleteShow(int showId) throws SQLException {
-        String sql = "DELETE FROM show WHERE show_id=?";
+        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
+            conn.setAutoCommit(false);
 
-        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            try (PreparedStatement deleteReservations = conn.prepareStatement(
+                    "DELETE FROM booking WHERE show_id = ?")) {
+                deleteReservations.setInt(1, showId);
+                deleteReservations.executeUpdate();
+            }
 
-            pstmt.setInt(1, showId);
-            pstmt.executeUpdate();
+            try (PreparedStatement deleteShow = conn.prepareStatement(
+                    "DELETE FROM show WHERE show_id = ?")) {
+                deleteShow.setInt(1, showId);
+                deleteShow.executeUpdate();
+            }
+
+            conn.commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
         }
     }
 }

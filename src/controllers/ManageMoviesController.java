@@ -94,10 +94,37 @@ public class ManageMoviesController {
             return;
         }
 
-        // Podobnie jak w handleAddShow, otwórz okno edycji z wybranym seansiem
-        System.out.println("Edytuj seans: " + selectedShow);
-        // Tutaj dodaj implementację okna edycji seansu, jeśli masz
+        try {
+            // Pobierz obiekt Movie na podstawie movie_id
+            MovieService movieService = new MovieService();
+            Movie movie = movieService.getMovieById(selectedShow.getMovieId());
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Resources/AddShowView.fxml"));
+            Parent root = loader.load();
+
+            AddShowController controller = loader.getController();
+            controller.setMovie(movie);
+            controller.setTheatre(theatre);
+            controller.setShowToEdit(selectedShow);
+
+            Stage stage = new Stage();
+            stage.setTitle("Edytuj seans - " + movie.getTitle());
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+
+            loadShows(movie); // odświeżenie listy
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Nie udało się otworzyć okna edycji seansu.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Nie udało się pobrać filmu dla edytowanego seansu.");
+        }
     }
+
+
 
     @FXML
     private void handleDeleteShow() {
