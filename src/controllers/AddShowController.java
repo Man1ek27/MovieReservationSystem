@@ -63,7 +63,7 @@ public class AddShowController {
             Show show = new Show(legacyDate, price.doubleValue(), movie.getMovieId(), screen.getScreenId());
 
             saveShowToDatabase(show);
-            showService.addShow(show);
+//            showService.addShow(show);
 
             Stage stage = (Stage) datePicker.getScene().getWindow();
             stage.close();
