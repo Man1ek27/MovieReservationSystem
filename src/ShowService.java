@@ -100,21 +100,22 @@ public class ShowService {
     }
 
     public void addShow(Show show) {
-        String sql = "INSERT INTO show (show_id, show_time, price, movie_id, screen_id) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO show (show_time, price, movie_id, screen_id) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            pstmt.setTime(2, new java.sql.Time(show.getShowTime().getTime()));
-            pstmt.setDouble(3, show.getPrice());
-            pstmt.setInt(4, show.getMovieId());
-            pstmt.setInt(5, show.getScreenId());
+            pstmt.setTimestamp(1, new java.sql.Timestamp(show.getShowTime().getTime()));
+            pstmt.setDouble(2, show.getPrice());
+            pstmt.setInt(3, show.getMovieId());
+            pstmt.setInt(4, show.getScreenId());
 
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
 
     public void updateShow(Show show) throws SQLException {
         String sql = "UPDATE show SET show_time=?, price=?, movie_id=?, screen_id=? WHERE show_id=?";

@@ -25,7 +25,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         // ... reszta kodu JavaFX, która ładuje login.fxml
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/login.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Resources/login.fxml"));
         Parent root = loader.load();
         primaryStage.setTitle("Logowanie");
         primaryStage.setScene(new Scene(root));
