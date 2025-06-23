@@ -10,6 +10,17 @@ public class TheatreService {
     private static final String DB_USER = "postgres";
     private static final String DB_PASSWORD = "123qwe";
 
+    private Connection connection;
+
+    public TheatreService() {
+        try {
+            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public List<Theatre> getAllTheatres() {
         List<Theatre> theatres = new ArrayList<>();
         String query = "SELECT * FROM theatre";
@@ -30,4 +41,26 @@ public class TheatreService {
         }
         return theatres;
     }
+
+    public void deleteTheatre(int theatreId) {
+        try {
+            // Usuń powiązania z tabeli admin_theatre
+            String sql1 = "DELETE FROM admin_theatre WHERE theatre_id = ?";
+            try (PreparedStatement ps = connection.prepareStatement(sql1)) {
+                ps.setInt(1, theatreId);
+                ps.executeUpdate();
+            }
+
+            // Usuń kino z tabeli theatre
+            String sql2 = "DELETE FROM theatre WHERE theatre_id = ?";
+            try (PreparedStatement ps = connection.prepareStatement(sql2)) {
+                ps.setInt(1, theatreId);
+                ps.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // tu możesz dodać obsługę błędów (np. rzucić wyjątek dalej)
+        }
+    }
+
 }
