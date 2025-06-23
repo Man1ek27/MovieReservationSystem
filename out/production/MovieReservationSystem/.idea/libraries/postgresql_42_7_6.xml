@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="postgresql-42.7.6">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../../Java/javafx-sdk-24.0.1/postgresql-42.7.6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
