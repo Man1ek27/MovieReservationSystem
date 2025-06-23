@@ -41,5 +41,35 @@ public class ScreenService {
         return screens;
     }
 
-    // Możesz też dodać addScreen(Screen screen)
+    public List<Screen> getScreensByMovie(int movieId) {
+        List<Screen> screens = new ArrayList<>();
+        String sql = "SELECT DISTINCT s.screen_id, s.name, s.capacity, s.theatre_id " +
+                "FROM screen s JOIN show sh ON s.screen_id = sh.screen_id " +
+                "WHERE sh.movie_id = ?";
+
+        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, movieId);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    Screen screen = new Screen(
+                            rs.getInt("screen_id"),
+                            rs.getString("name"),
+                            rs.getInt("capacity"),
+                            rs.getInt("theatre_id")
+                    );
+                    screens.add(screen);
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return screens;
+    }
+
+
+
 }

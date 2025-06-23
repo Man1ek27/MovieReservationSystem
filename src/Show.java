@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Show {
     private int showId;
-    private Date showTime; // Będzie przechowywać zarówno datę, jak i czas
+    private Date showTime;
     private double price;
     private int movieId;
     private int screenId;
@@ -13,7 +13,6 @@ public class Show {
 
     /**
      * Klasa implementująca dany seans
-     * @param showTime - czas i data seansu (jako jeden obiekt Date)
      * @param price - cena biletu
      * @param movieId - id filmu wyświetlanego
      * @param screenId - id powiązanego ekranu/sali

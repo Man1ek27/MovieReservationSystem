@@ -7,6 +7,8 @@ public class Seat  {
     private int seatId;
     private int seatNumber;
     private String type;
+    private boolean reserved = false;
+
 
     static private int id = 0;
 
@@ -21,10 +23,11 @@ public class Seat  {
      * @param seatNumber - nr siedzenia w rzędzie
      * @param seatType - typ siedzenia
      */
-    public Seat(int seatId, int seatNumber, String seatType) {
+    public Seat(int seatId, int seatNumber, String seatType, boolean reserved) {
         this.seatId = seatId;
         this.seatNumber = seatNumber;
         this.type = seatType;
+        this.reserved = reserved;
     }
 
     //SETTERS
@@ -45,5 +48,13 @@ public class Seat  {
     }
     public String getType() {
         return type;
+    }
+
+    public boolean isReserved() {
+        return reserved;
+    }
+
+    public void setReserved(boolean reserved) {
+        this.reserved = reserved;
     }
 }

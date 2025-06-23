@@ -1,6 +1,7 @@
 package src.controllers;
 
 import javafx.fxml.FXML;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,6 +18,7 @@ import src.Theatre;
 import src.TheatreService;
 
 import java.io.IOException;
+
 import java.util.List;
 
 public class MoviesController {
@@ -29,6 +31,7 @@ public class MoviesController {
     private Button backButton; // Dodajemy referencję do przycisku "Wróć"
     @FXML
     private Button actionButton; // Dodajemy referencję do przycisku "Wybierz"
+    private ListView<Movie> moviesListView;
 
     private MovieService movieService;
     private TheatreService theatreService; // Potrzebujemy TheatreService do cofania do wyboru teatru

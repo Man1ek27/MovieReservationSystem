@@ -1,16 +1,12 @@
 package src.controllers;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
-import javafx.stage.Stage;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 
@@ -18,13 +14,12 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
 
-import src.*;
+import src.Row;
+import src.Seat;
 
 public class SceneController {
     private WebSocketClient wsClient;
     private int screenId = 1; // id sali do wyświetlenia
-    private Show selectedShow;
-
 
     public void initialize() {
         connectToWebSocket();
@@ -85,7 +80,8 @@ public class SceneController {
                 int seatId = Integer.parseInt(seatParts[0]);
                 int seatNumber = Integer.parseInt(seatParts[1]);
                 String seatType = seatParts[2];
-                seats.add(new Seat(seatId, seatNumber, seatType));
+                boolean status = Boolean.parseBoolean(seatParts[3]);
+                seats.add(new Seat(seatId, seatNumber, seatType,status));
             }
 
             rows.add(new Row(rowId, "Classic", seats)); // Zakładając typ rzędu
@@ -103,6 +99,8 @@ public class SceneController {
     }
 
     private final Set<Seat> selectedSeats = new HashSet<>();
+
+
 
     private void generujMiejsca(List<Row> rows) {
         seatsGrid.getChildren().clear();
@@ -142,12 +140,14 @@ public class SceneController {
                 seatBtn.setStyle(getSeatStyle(seat));
 
                 seatBtn.setOnAction(event -> {
-                    if (selectedSeats.contains(seat)) {
-                        selectedSeats.remove(seat);
-                        seatBtn.setStyle(getSeatStyle(seat)); // Przywróć domyślny styl
-                    } else {
-                        selectedSeats.add(seat);
-                        seatBtn.setStyle("-fx-background-color: #222; -fx-text-fill: white;"); // Wybrany
+                    if(!seat.isReserved()){
+                        if (selectedSeats.contains(seat)) {
+                            selectedSeats.remove(seat);
+                            seatBtn.setStyle(getSeatStyle(seat)); // Przywróć domyślny styl
+                        } else {
+                            selectedSeats.add(seat);
+                            seatBtn.setStyle("-fx-background-color: #222; -fx-text-fill: white;"); // Wybrany
+                        }
                     }
 
                     counter.setText("(liczba wybranych miejsc: " +selectedSeats.size() + ")");
@@ -166,6 +166,9 @@ public class SceneController {
 
     // Przykładowa metoda stylująca miejsca
     private String getSeatStyle(Seat seat) {
+        if(seat.isReserved()){
+            return "-fx-background-color: #bdbdbd; -fx-text-fill: white;";
+        }
         switch (seat.getType()) {
             case "Regular": return "-fx-background-color: #43a047; -fx-text-fill: white;";
             case "Wheelchair": return "-fx-background-color: #2196f3; -fx-text-fill: white;";
@@ -173,57 +176,19 @@ public class SceneController {
             case "Unavailable": return "-fx-background-color: #bdbdbd; -fx-text-fill: white;";
             default: return "-fx-background-color: #43a047; -fx-text-fill: white;";
         }
-    }
-
 
     public void initData(Show show, int currentUserId) {
         this.selectedShow = show;
+
     }
 
-    @FXML
-    private void handleNext() {
-        if (selectedSeats.isEmpty()) {
-            showAlert("Brak wybranych miejsc", "Proszę wybrać co najmniej jedno miejsce.");
-            return;
+
+    public void handleNext(ActionEvent actionEvent) {
+        StringBuffer seatsId = new StringBuffer("RESERVED_SEATS:");
+        for(Seat seat: selectedSeats){
+            seatsId.append(seat.getSeatId()).append("-");
         }
-
-        double totalAmount = selectedSeats.size() * selectedShow.getPrice();
-
-        try {
-//            Booking newBooking = new Booking(new Date(), totalAmount, currentUser.getUserId(), selectedShow.getShowId());
-            //TODO: NAPRAWIC CURRENTUSER
-            Booking newBooking = new Booking(new Date(), totalAmount, 1, selectedShow.getShowId());
-            newBooking.setStatus("PENDING");
-
-
-            int bookingId = newBooking.getBookingId(); // Użyjemy wygenerowanego ID z obiektu Booking
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/PaymentView.fxml"));
-            Parent root = loader.load();
-
-            PaymentController paymentController = loader.getController();
-            paymentController.setAmount(totalAmount);
-            paymentController.setBookingId(bookingId);
-//            paymentController.setUserId(currentUser.getUserId()); // Przekaż ID użytkownika
-            paymentController.setUserId(1); // Przekaż ID użytkownika
-            paymentController.setWsClient(wsClient); // Przekaż instancję WebSocketClient
-
-            Stage stage = (Stage) seatsGrid.getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Płatność");
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-            showAlert("Błąd", "Nie można załadować ekranu płatności.");
-        }
-    }
-
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+        wsClient.send(seatsId.toString());
     }
 }
 

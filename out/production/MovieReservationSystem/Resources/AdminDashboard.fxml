@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="src.controllers.AdminDashboardController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <VBox alignment="CENTER" spacing="20.0"
+          AnchorPane.topAnchor="50.0"
+          AnchorPane.bottomAnchor="50.0"
+          AnchorPane.leftAnchor="100.0"
+          AnchorPane.rightAnchor="100.0">
+
+        <Text text="Panel administratora" style="-fx-font-size: 20px;"/>
+
+        <Button fx:id="manageMoviesButton" text="Zarządzaj filmami" onAction="#handleMoviesPanel"/>
+        <Button text="Zarządzaj kinami" onAction="#handleTheatresPanel"/>
+        <Button text="Zarządzaj użytkownikami" onAction="#handleUsersPanel"/>
+
+        <Button fx:id="logoutButton"
+                text="Wyloguj się"
+                onAction="#handleLogout"
+                prefWidth="120"
+                style="-fx-font-size: 14px; -fx-background-color: #DD4444; -fx-text-fill: white; -fx-padding: 8px;" />
+    </VBox>
+</AnchorPane>

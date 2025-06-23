@@ -27,7 +27,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Resources/login.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Resources/login.fxml"));
         Parent root = loader.load();
         primaryStage.setTitle("Logowanie");
         primaryStage.setScene(new Scene(root));
@@ -37,11 +37,14 @@ public class Main extends Application {
 //        Parent root = loader.load();
 //        primaryStage.setTitle("Wybór miejsc");
 //        SceneController controller = loader.getController();
-//        controller.setScreenId(1);//// tutaj zmieniacie numer Sali
+//        controller.setScreenId(30);//// tutaj zmieniacie numer Sali
 //        primaryStage.setScene(new Scene(root));
 //        primaryStage.show();
+
         //Szybkie wytłumacznie jak to działa: zmieniacie tylko i wyłącznie numer wyświetlanej sali
         //reszta działa sama
+
+
     }
 
     @Override

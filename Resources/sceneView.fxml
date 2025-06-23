@@ -33,7 +33,6 @@
             <Label text="Miejsca niedostępne" />
         </HBox>
     </HBox>
-
     <!-- Przyciski -->
     <VBox alignment="CENTER" spacing="10">
         <Button onAction="#handleNext" style="-fx-background-color: #ffcc99; -fx-font-size: 16px; -fx-font-weight: bold;" text="DALEJ" />
