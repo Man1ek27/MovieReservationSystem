@@ -3,10 +3,15 @@ package src.controllers;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
+import javafx.stage.Stage;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 
@@ -14,12 +19,13 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
 
-import src.Row;
-import src.Seat;
+import src.*;
 
 public class SceneController {
     private WebSocketClient wsClient;
     private int screenId = 1; // id sali do wyświetlenia
+    private Show selectedShow;
+
 
     public void initialize() {
         connectToWebSocket();
@@ -180,12 +186,63 @@ public class SceneController {
     }
 
 
+    public void initData(Show show) {
+        this.selectedShow = show;
+    }
+
+    @FXML
+    private void handleNext() {
+        if (selectedSeats.isEmpty()) {
+            showAlert("Brak wybranych miejsc", "Proszę wybrać co najmniej jedno miejsce.");
+            return;
+        }
+
+        double totalAmount = selectedSeats.size() * selectedShow.getPrice();
+
+        try {
+//            Booking newBooking = new Booking(new Date(), totalAmount, currentUser.getUserId(), selectedShow.getShowId());
+            //TODO: NAPRAWIC CURRENTUSER
+            Booking newBooking = new Booking(new Date(), totalAmount, 1, selectedShow.getShowId());
+            newBooking.setStatus("PENDING");
+
+
+            int bookingId = newBooking.getBookingId(); // Użyjemy wygenerowanego ID z obiektu Booking
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/PaymentView.fxml"));
+            Parent root = loader.load();
+
+            PaymentController paymentController = loader.getController();
+            paymentController.setAmount(totalAmount);
+            paymentController.setBookingId(bookingId);
+//            paymentController.setUserId(currentUser.getUserId()); // Przekaż ID użytkownika
+            paymentController.setUserId(1); // Przekaż ID użytkownika
+            paymentController.setWsClient(wsClient); // Przekaż instancję WebSocketClient
+
+            Stage stage = (Stage) seatsGrid.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Płatność");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Błąd", "Nie można załadować ekranu płatności.");
+        }
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
     public void handleNext(ActionEvent actionEvent) {
         StringBuffer seatsId = new StringBuffer("RESERVED_SEATS:");
         for(Seat seat: selectedSeats){
             seatsId.append(seat.getSeatId()).append("-");
         }
         wsClient.send(seatsId.toString());
+
     }
 }
 
