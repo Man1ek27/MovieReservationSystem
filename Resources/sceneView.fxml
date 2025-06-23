@@ -36,7 +36,7 @@
 
     <!-- Przyciski -->
     <VBox alignment="CENTER" spacing="10">
-        <Button style="-fx-background-color: #ffcc99; -fx-font-size: 16px; -fx-font-weight: bold;" text="DALEJ" />
+        <Button onAction="#handleNext" style="-fx-background-color: #ffcc99; -fx-font-size: 16px; -fx-font-weight: bold;" text="DALEJ" />
         <Label fx:id="counter" style="-fx-text-fill: #888;" text="(liczba wybranych miejsc: 0)" />
         <Button style="-fx-background-color: #222; -fx-text-fill: white; -fx-font-size: 16px;" text="WRÓĆ" />
     </VBox>
