@@ -1,6 +1,7 @@
 package src.controllers;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -79,7 +80,8 @@ public class SceneController {
                 int seatId = Integer.parseInt(seatParts[0]);
                 int seatNumber = Integer.parseInt(seatParts[1]);
                 String seatType = seatParts[2];
-                seats.add(new Seat(seatId, seatNumber, seatType));
+                boolean status = Boolean.parseBoolean(seatParts[3]);
+                seats.add(new Seat(seatId, seatNumber, seatType,status));
             }
 
             rows.add(new Row(rowId, "Classic", seats)); // Zakładając typ rzędu
@@ -97,6 +99,8 @@ public class SceneController {
     }
 
     private final Set<Seat> selectedSeats = new HashSet<>();
+
+
 
     private void generujMiejsca(List<Row> rows) {
         seatsGrid.getChildren().clear();
@@ -136,12 +140,14 @@ public class SceneController {
                 seatBtn.setStyle(getSeatStyle(seat));
 
                 seatBtn.setOnAction(event -> {
-                    if (selectedSeats.contains(seat)) {
-                        selectedSeats.remove(seat);
-                        seatBtn.setStyle(getSeatStyle(seat)); // Przywróć domyślny styl
-                    } else {
-                        selectedSeats.add(seat);
-                        seatBtn.setStyle("-fx-background-color: #222; -fx-text-fill: white;"); // Wybrany
+                    if(!seat.isReserved()){
+                        if (selectedSeats.contains(seat)) {
+                            selectedSeats.remove(seat);
+                            seatBtn.setStyle(getSeatStyle(seat)); // Przywróć domyślny styl
+                        } else {
+                            selectedSeats.add(seat);
+                            seatBtn.setStyle("-fx-background-color: #222; -fx-text-fill: white;"); // Wybrany
+                        }
                     }
 
                     counter.setText("(liczba wybranych miejsc: " +selectedSeats.size() + ")");
@@ -160,6 +166,9 @@ public class SceneController {
 
     // Przykładowa metoda stylująca miejsca
     private String getSeatStyle(Seat seat) {
+        if(seat.isReserved()){
+            return "-fx-background-color: #bdbdbd; -fx-text-fill: white;";
+        }
         switch (seat.getType()) {
             case "Regular": return "-fx-background-color: #43a047; -fx-text-fill: white;";
             case "Wheelchair": return "-fx-background-color: #2196f3; -fx-text-fill: white;";
@@ -167,8 +176,16 @@ public class SceneController {
             case "Unavailable": return "-fx-background-color: #bdbdbd; -fx-text-fill: white;";
             default: return "-fx-background-color: #43a047; -fx-text-fill: white;";
         }
+
     }
 
 
+    public void handleNext(ActionEvent actionEvent) {
+        StringBuffer seatsId = new StringBuffer("RESERVED_SEATS:");
+        for(Seat seat: selectedSeats){
+            seatsId.append(seat.getSeatId()).append("-");
+        }
+        wsClient.send(seatsId.toString());
+    }
 }
 
