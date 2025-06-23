@@ -166,21 +166,26 @@ public class SceneController {
 
     // Przykładowa metoda stylująca miejsca
     private String getSeatStyle(Seat seat) {
-        if(seat.isReserved()){
+        if (seat.isReserved()) {
             return "-fx-background-color: #bdbdbd; -fx-text-fill: white;";
         }
         switch (seat.getType()) {
-            case "Regular": return "-fx-background-color: #43a047; -fx-text-fill: white;";
-            case "Wheelchair": return "-fx-background-color: #2196f3; -fx-text-fill: white;";
-            case "Selected": return "-fx-background-color: #222; -fx-text-fill: white;";
-            case "Unavailable": return "-fx-background-color: #bdbdbd; -fx-text-fill: white;";
-            default: return "-fx-background-color: #43a047; -fx-text-fill: white;";
+            case "Regular":
+                return "-fx-background-color: #43a047; -fx-text-fill: white;";
+            case "Wheelchair":
+                return "-fx-background-color: #2196f3; -fx-text-fill: white;";
+            case "Selected":
+                return "-fx-background-color: #222; -fx-text-fill: white;";
+            case "Unavailable":
+                return "-fx-background-color: #bdbdbd; -fx-text-fill: white;";
+            default:
+                return "-fx-background-color: #43a047; -fx-text-fill: white;";
         }
 
-    public void initData(Show show, int currentUserId) {
-        this.selectedShow = show;
 
     }
+
+
 
 
     public void handleNext(ActionEvent actionEvent) {
