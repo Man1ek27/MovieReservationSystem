@@ -58,6 +58,31 @@ public class ChooseTheatreController {
     }
 
     @FXML
+    private void onMyReservationsButtonClick() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/MyReservationsView.fxml"));
+            Parent root = loader.load();
+
+            MyReservationsController controller = loader.getController();
+
+//            controller.initData(userId, username, theatre, movieService);
+            //TODO : dodać metode initdata sensowna -> dopisać w MyReservationsController.java ją
+
+            Stage stage = new Stage();
+            stage.setTitle("Moje Rezerwacje");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Nie można załadować widoku 'Moje Rezerwacje'.");
+            alert.setTitle("Błąd ładowania");
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
+
+    }
+    @FXML
     private void handleLogout() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/login.fxml"));
