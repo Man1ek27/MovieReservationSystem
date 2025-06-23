@@ -1,6 +1,9 @@
 package src.controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import src.Movie;
@@ -56,17 +59,17 @@ public class MovieAddController {
             Stage currentStage = (Stage) titleField.getScene().getWindow();
             currentStage.close();
 
-//            // Otwórz nowe okno panelu admina (listy filmów)
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Recources/AdminDashboard.fxml"));
-//            Parent root = loader.load();
-//
-//            MovieListController controller = loader.getController();
-//            controller.setMovieService(movieService);  // przekaż MovieService
-//
-//            Stage stage = new Stage();
-//            stage.setTitle("Panel Admina - Lista filmów");
-//            stage.setScene(new Scene(root));
-//            stage.show();
+            // Otwórz nowe okno panelu admina (listy filmów)
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/AdminDashboard.fxml"));
+            Parent root = loader.load();
+
+            MovieListController controller = loader.getController();
+            controller.setMovieService(movieService);  // przekaż MovieService
+
+            Stage stage = new Stage();
+            stage.setTitle("Panel Admina - Lista filmów");
+            stage.setScene(new Scene(root));
+            stage.show();
 
         } catch (Exception e) {
             e.printStackTrace();
