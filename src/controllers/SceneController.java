@@ -176,7 +176,7 @@ public class SceneController {
     }
 
 
-    public void initData(Show show) {
+    public void initData(Show show, int currentUserId) {
         this.selectedShow = show;
     }
 
