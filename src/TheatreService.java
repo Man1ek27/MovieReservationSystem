@@ -50,13 +50,6 @@ public class TheatreService {
 
     public void deleteTheatre(int theatreId) {
         try {
-            // Usuń powiązania z tabeli admin_theatre
-            String sql1 = "DELETE FROM admin_theatre WHERE theatre_id = ?";
-            try (PreparedStatement ps = connection.prepareStatement(sql1)) {
-                ps.setInt(1, theatreId);
-                ps.executeUpdate();
-            }
-
             // Usuń kino z tabeli theatre
             String sql2 = "DELETE FROM theatre WHERE theatre_id = ?";
             try (PreparedStatement ps = connection.prepareStatement(sql2)) {
