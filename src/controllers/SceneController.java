@@ -203,12 +203,16 @@ public class SceneController {
             showAlert("Brak wybranych miejsc", "Proszę wybrać co najmniej jedno miejsce.");
             return;
         }
+        StringBuffer seatsId = new StringBuffer("RESERVED_SEATS:");
+        for(Seat seat: selectedSeats){
+            seatsId.append(seat.getSeatId()).append("-");
+        }
+        wsClient.send(seatsId.toString());
 
         double totalAmount = selectedSeats.size() * selectedShow.getPrice();
 
         try {
 //            Booking newBooking = new Booking(new Date(), totalAmount, currentUser.getUserId(), selectedShow.getShowId());
-            //TODO: NAPRAWIC CURRENTUSER
             Booking newBooking = new Booking(new Date(), totalAmount, 1, selectedShow.getShowId());
             newBooking.setStatus("PENDING");
 
