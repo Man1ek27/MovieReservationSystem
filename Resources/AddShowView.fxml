@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import java.time.LocalDate?>
+<?import javafx.scene.control.DatePicker?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx/24" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="src.controllers.AddShowController">
+    <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+
+    <Label text="Dodaj seans"/>
+
+    <DatePicker fx:id="datePicker" promptText="Data"/>
+    <TextField fx:id="timeField" promptText="Godzina (HH:MM)"/>
+    <TextField fx:id="priceField" promptText="Cena (np. 29.99)"/>
+    <ComboBox fx:id="screenComboBox" promptText="Sala"/>
+
+    <HBox spacing="10">
+        <Button text="Dodaj" onAction="#handleAdd"/>
+        <Button text="Anuluj" onAction="#handleCancel"/>
+    </HBox>
+</VBox>

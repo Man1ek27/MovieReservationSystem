@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/24" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="src.controllers.ManageMoviesController">
+
+    <top>
+        <Label text="Zarządzaj filmami i seansami" style="-fx-font-size: 18px; -fx-padding: 10 0 10 10;"/>
+    </top>
+
+    <center>
+        <HBox spacing="15">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <!-- Lista filmów -->
+            <VBox spacing="5" HBox.hgrow="ALWAYS">
+                <Label text="Filmy:"/>
+                <ListView fx:id="moviesListView" prefWidth="300" VBox.vgrow="ALWAYS"/>
+            </VBox>
+
+            <!-- Lista seansów -->
+            <VBox spacing="5" HBox.hgrow="ALWAYS">
+                <Label text="Seanse wybranego filmu:"/>
+                <ListView fx:id="showsListView" prefWidth="300" VBox.vgrow="ALWAYS"/>
+            </VBox>
+        </HBox>
+    </center>
+
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <!-- Przycisk dodawania seansu -->
+            <Button text="Dodaj seans" onAction="#handleAddShow"/>
+            <!-- Przycisk edycji seansu -->
+            <Button text="Edytuj seans" onAction="#handleEditShow"/>
+            <!-- Przycisk usuwania seansu -->
+            <Button text="Usuń seans" onAction="#handleDeleteShow"/>
+            <!-- Przycisk powrotu -->
+            <Button text="Powrót" onAction="#handleBack"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
