@@ -84,7 +84,7 @@ public class MoviesController {
     private void loadShowsForMovie(Movie movie) {
         this.selectedMovieForShows = movie;
         currentViewLabel.setText("Seanse dla filmu: " + movie.getTitle());
-        List<Show> shows = showService.getShowsByMovieId(movie.getMovieId());
+        List<Show> shows = showService.getShowsByMovie(movie.getMovieId());
         mainListView.getItems().setAll(shows);
         showingMovies = false;
         backButton.setText("Wróć do filmów"); // Zmieniamy tekst przycisku
