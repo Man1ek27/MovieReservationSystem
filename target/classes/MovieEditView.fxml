@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.MovieEditController">
+    <center>
+        <GridPane hgap="10" vgap="10">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <Label text="Tytuł:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="titleField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label text="Opis:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextArea fx:id="descriptionArea" prefRowCount="3" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <Label text="Język:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="languageField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <Label text="Gatunek:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <TextField fx:id="genreField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+            <Label text="Czas trwania (min):" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <TextField fx:id="durationField" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+            <Label text="Data premiery:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <DatePicker fx:id="releaseDatePicker" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+            <Label text="Poster URL:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+            <TextField fx:id="posterUrlField" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+            <Label text="Typ audio:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="audioTypeCombo" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+        </GridPane>
+    </center>
+
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Button text="Zapisz" onAction="#onSaveButtonClick"/>
+            <Button text="Anuluj" onAction="#onCancelButtonClick"/>
+        </HBox>
+    </bottom>
+</BorderPane>

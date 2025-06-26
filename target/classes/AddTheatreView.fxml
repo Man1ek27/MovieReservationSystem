@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controllers.AddTheatreController"
+      alignment="CENTER" spacing="10">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Dodaj nowe kino" style="-fx-font-size: 18px;"/>
+
+    <TextField fx:id="nameField" promptText="Nazwa kina"/>
+    <TextField fx:id="addressField" promptText="Adres"/>
+    <TextField fx:id="cityField" promptText="Miasto"/>
+
+    <Button text="Dodaj" onAction="#handleAddTheatre"/>
+</VBox>

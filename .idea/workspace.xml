@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f2a25fcc-be34-46e4-8366-b710a2020843" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/AddShowView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/AddTheatreView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/ManageMoviesView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/MovieAddView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/MovieEditView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/MovieManagement.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/MoviesView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/MyReservationsView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/PaymentView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/TheatreView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/UserManagement.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/classes/Admin.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/classes/Booking.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/classes/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/classes/Movie$AudioType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/classes/Movie.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/classes/MovieService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/classes/Payment.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/classes/Row.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/classes/Screen.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/classes/ScreenService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/classes/Seat.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/classes/Show.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/classes/ShowService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/classes/Theatre.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/classes/TheatreService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/classes/User.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/classes/UserService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/controllers/AddShowController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/controllers/AddTheatreController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/controllers/AdminDashboardController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/controllers/ChooseTheatreController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/controllers/LoginController$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/controllers/LoginController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/controllers/ManageMoviesController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/controllers/ManageShowsController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/controllers/MovieAddController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/controllers/MovieEditController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/controllers/MovieListController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/controllers/MovieManagementController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/controllers/MoviesController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/controllers/MyReservationsController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/controllers/PaymentController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/controllers/RegisterController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/controllers/SceneController$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/controllers/SceneController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/controllers/TheatreViewController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/controllers/UserManagementController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/register.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/sceneView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/server/MovieReservationWebSocketServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Java_WebSocket_1_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/postgresql_42_7_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/slf4j_api_1_7_36.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/slf4j_simple_1_7_36.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqlDataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MovieReservationSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MovieReservationSystem.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/AddShowView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AddShowView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/AddTheatreView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AddTheatreView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/AdminDashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AdminDashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/ChooseTheatreView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ChooseTheatreView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/ManageMoviesView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ManageMoviesView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/MovieAddView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MovieAddView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/MovieEditView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MovieEditView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/MovieListView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MovieListView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/MovieManagement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MovieManagement.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/MoviesView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MoviesView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/MyReservationsView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MyReservationsView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/PaymentView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/PaymentView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/TheatreView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/TheatreView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/UserManagement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/UserManagement.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/download.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/download.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/register.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/sceneView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sceneView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/LoginControllerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LoginControllerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/RegisterControllerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RegisterControllerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/WeSocketTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/WeSocketTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Java-WebSocket-1.5.6.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/byte-buddy-1.17.6.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/byte-buddy-agent-1.17.6.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/junit-jupiter-5.13.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/junit-jupiter-api-5.13.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/junit-jupiter-engine-5.13.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mockito-core-5.18.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/objenesis-3.4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/postgresql-42.7.6.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/slf4j-api-1.7.36.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/slf4j-simple-1.7.36.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/moviereservation_dump.sql" beforeDir="false" afterPath="$PROJECT_DIR$/moviereservation_dump.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieReservationSystem/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieReservationSystem/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieReservationSystem/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieReservationSystem/.idea/libraries/Java_WebSocket_1_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieReservationSystem/.idea/libraries/postgresql_42_7_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieReservationSystem/.idea/libraries/slf4j_api_1_7_36.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieReservationSystem/.idea/libraries/slf4j_simple_1_7_36.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieReservationSystem/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieReservationSystem/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieReservationSystem/.idea/sqlDataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieReservationSystem/.idea/sqldialects.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieReservationSystem/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieReservationSystem/MovieReservationSystem.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieReservationSystem/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieReservationSystem/Resources/AdminDashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AdminDashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieReservationSystem/Resources/ChooseTheatreView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ChooseTheatreView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieReservationSystem/Resources/MovieListView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MovieListView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieReservationSystem/Resources/download.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/download.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieReservationSystem/Resources/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieReservationSystem/lib/Java-WebSocket-1.5.6.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieReservationSystem/lib/postgresql-42.7.6.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieReservationSystem/lib/slf4j-api-1.7.36.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieReservationSystem/lib/slf4j-simple-1.7.36.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieReservationSystem/moviereservation_dump.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MovieReservationSystem/twoja_baza_dump.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classes/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classes/Booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classes/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classes/Movie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MovieService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classes/MovieService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classes/Payment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Row.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classes/Row.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classes/Screen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScreenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classes/ScreenService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Seat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classes/Seat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classes/Show.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ShowService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classes/ShowService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Theatre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classes/Theatre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TheatreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classes/TheatreService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classes/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classes/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/AddShowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/AddShowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/AddTheatreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/AddTheatreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/AdminDashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/AdminDashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/ChooseTheatreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ChooseTheatreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/ManageMoviesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ManageMoviesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/ManageShowsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ManageShowsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/MovieAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MovieAddController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/MovieEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MovieEditController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/MovieListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MovieListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/MovieManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MovieManagementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/MoviesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MoviesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/MyReservationsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MyReservationsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/PaymentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/SceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/SceneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/TheatreViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/TheatreViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/UserManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/UserManagementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/MovieReservationWebSocketServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/MovieReservationWebSocketServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/twoja_baza_dump.sql" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Man1ek27&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Man1ek27/MovieReservationSystem.git&quot;,
+    &quot;accountId&quot;: &quot;ac6f43f6-2629-4eb4-8992-a4a1027c94b7&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2z2V54FEXSvf8v346OybLxIMcl5" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.MovieReservationWebSocketServer.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Mariu/OneDrive/Dokumenty/JAVA/MovieReservationSystem/pom.xml",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Mariu\OneDrive\Dokumenty\JAVA\MovieReservationSystem\src\main\resources" />
+      <recent name="C:\Users\Mariu\OneDrive\Dokumenty\JAVA\MovieReservationSystem\src\main\java" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="classes.Main" />
+      <module name="MovieReservationSystem" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\javafx-sdk-24.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml --enable-native-access=javafx.graphics --add-opens=java.base/sun.misc=ALL-UNNAMED --enable-native-access=ALL-UNNAMED --sun-misc-unsafe-memory-access=allow" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f2a25fcc-be34-46e4-8366-b710a2020843" name="Changes" comment="" />
+      <created>1750928968879</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1750928968879</updated>
+      <workItem from="1750928970030" duration="169000" />
+      <workItem from="1750929236427" duration="240000" />
+      <workItem from="1750929490137" duration="180000" />
+      <workItem from="1750929682440" duration="418000" />
+      <workItem from="1750930115025" duration="4442000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

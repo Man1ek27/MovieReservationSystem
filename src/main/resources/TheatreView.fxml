@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controllers.TheatreViewController"
+      spacing="10" alignment="TOP_CENTER">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+
+    <Label text="Lista kin" style="-fx-font-size: 20px;"/>
+
+    <ListView fx:id="theatreListView" prefHeight="400" prefWidth="500"/>
+
+    <HBox spacing="10">
+        <Button text="Dodaj kino" onAction="#handleAdd"/>
+        <Button text="Zarządzaj" onAction="#handleManage"/>
+        <Button text="Usuń" onAction="#handleDelete"/>
+    </HBox>
+
+    <Button text="Cofnij" onAction="#handleBack"/>
+</VBox>
