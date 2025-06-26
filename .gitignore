@@ -1,0 +1,16 @@
+# IntelliJ
+.idea/
+*.iml
+
+# Maven
+target/
+
+# Systemowe
+.DS_Store
+Thumbs.db
+
+# Logi i tymczasowe
+*.log
+
+# Pliki środowiskowe
+.env
